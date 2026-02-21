@@ -4,8 +4,11 @@ export interface Flight {
     origin: string;
     destination: string;
 
-    departureTime: string; // departure and arrival time in UTC not local time 
-    arrivalTime: string;
+    outboundDepartureTime: string; // departure and arrival time in UTC not local time 
+    outboundArrivalTime: string;
+
+    inboundDepartureTime: string;
+    inboundArrivalTime: string;
 
     price: number;
     duration: number;
@@ -16,5 +19,13 @@ export interface Flight {
 export interface SearchFlightQuery {
     from: string;
     to: string;
-    date: string;
+    outboundDateStart: string;
+    outboundDateEnd: string;
+    inboundDateStart: string;
+}
+
+export interface CommonDestination {
+    destination: string;
+    totalPrice: number;
+    flights: Flight[];
 }
