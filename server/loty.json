@@ -1,0 +1,752 @@
+
+      "legacyId": "23b0032d5037000092f59421_0-032d23b0504b00007ed64c9b_0",
+      "outbound": {
+        "id": "Sector:7b0dbf7cb6ce5e99d29d863a115298b6890ca41e~7b0dbf7cb6ce5e99d29d863a115298b6890ca41e",
+        "sectorSegments": [
+          {
+            "guarantee": null,
+            "segment": {
+              "id": "Segment:7b0dbf7cb6ce5e99d29d863a115298b6890ca41e",
+              "source": {
+                "localTime": "2026-03-23T19:30:00",
+                "utcTime": "2026-03-23T18:30:00",
+                "station": {
+                  "id": "Station:airport:WMI",
+                  "legacyId": "WMI",
+                  "name": "Warsaw Modlin",
+                  "code": "WMI",
+                  "type": "AIRPORT",
+                  "gps": {
+                    "lat": 52.4511111,
+                    "lng": 20.6516667
+                  },
+                  "city": {
+                    "legacyId": "warsaw_pl",
+                    "name": "Warsaw",
+                    "id": "City:warsaw_pl"
+                  },
+                  "country": {
+                    "code": "PL",
+                    "id": "Country:PL"
+                  }
+                }
+              },
+              "destination": {
+                "localTime": "2026-03-23T20:45:00",
+                "utcTime": "2026-03-23T20:45:00",
+                "station": {
+                  "id": "Station:airport:STN",
+                  "legacyId": "STN",
+                  "name": "London Stansted",
+                  "code": "STN",
+                  "type": "AIRPORT",
+                  "gps": {
+                    "lat": 51.885,
+                    "lng": 0.23500000000000001
+                  },
+                  "city": {
+                    "legacyId": "london_gb",
+                    "name": "London",
+                    "id": "City:london_gb"
+                  },
+                  "country": {
+                    "code": "GB",
+                    "id": "Country:GB"
+                  }
+                }
+              },
+              "duration": 8100,
+              "type": "FLIGHT",
+              "code": "1835",
+              "carrier": {
+                "id": "Carrier:11",
+                "name": "Ryanair",
+                "code": "FR"
+              },
+              "operatingCarrier": {
+                "id": "Carrier:1687",
+                "name": "Buzz",
+                "code": "RR"
+              },
+              "cabinClass": "ECONOMY",
+              "hiddenDestination": null,
+              "throwawayDestination": null
+            },
+            "layover": null
+          }
+        ],
+        "duration": 8100
+      },
+      "inbound": {
+        "id": "Sector:81ef14352daa28d131af75264e9b81dbef269897~81ef14352daa28d131af75264e9b81dbef269897",
+        "sectorSegments": [
+          {
+            "guarantee": null,
+            "segment": {
+              "id": "Segment:81ef14352daa28d131af75264e9b81dbef269897",
+              "source": {
+                "localTime": "2026-04-12T08:20:00",
+                "utcTime": "2026-04-12T07:20:00",
+                "station": {
+                  "id": "Station:airport:STN",
+                  "legacyId": "STN",
+                  "name": "London Stansted",
+                  "code": "STN",
+                  "type": "AIRPORT",
+                  "gps": {
+                    "lat": 51.885,
+                    "lng": 0.23500000000000001
+                  },
+                  "city": {
+                    "legacyId": "london_gb",
+                    "name": "London",
+                    "id": "City:london_gb"
+                  },
+                  "country": {
+                    "code": "GB",
+                    "id": "Country:GB"
+                  }
+                }
+              },
+              "destination": {
+                "localTime": "2026-04-12T11:35:00",
+                "utcTime": "2026-04-12T09:35:00",
+                "station": {
+                  "id": "Station:airport:WMI",
+                  "legacyId": "WMI",
+                  "name": "Warsaw Modlin",
+                  "code": "WMI",
+                  "type": "AIRPORT",
+                  "gps": {
+                    "lat": 52.4511111,
+                    "lng": 20.6516667
+                  },
+                  "city": {
+                    "legacyId": "warsaw_pl",
+                    "name": "Warsaw",
+                    "id": "City:warsaw_pl"
+                  },
+                  "country": {
+                    "code": "PL",
+                    "id": "Country:PL"
+                  }
+                }
+              },
+              "duration": 8100,
+              "type": "FLIGHT",
+              "code": "1021",
+              "carrier": {
+                "id": "Carrier:11",
+                "name": "Ryanair",
+                "code": "FR"
+              },
+              "operatingCarrier": {
+                "id": "Carrier:1687",
+                "name": "Buzz",
+                "code": "RR"
+              },
+              "cabinClass": "ECONOMY",
+              "hiddenDestination": null,
+              "throwawayDestination": null
+            },
+            "layover": null
+          }
+        ],
+        "duration": 8100
+      },
+      "stopover": {
+        "nightsCount": 20,
+        "arrival": {
+          "type": "AIRPORT",
+          "city": {
+            "name": "London",
+            "id": "City:london_gb"
+          },
+          "id": "Station:airport:STN"
+        },
+        "departure": {
+          "type": "AIRPORT",
+          "id": "Station:airport:STN"
+        },
+        "duration": 27995
+      },
+      "lastAvailable": {
+        "seatsLeft": null
+      }
+    },
+    {
+      "__typename": "ItineraryReturn",
+      "__isItinerary": "ItineraryReturn",
+      "id": "ItineraryReturn:eyJwcm92aWRlcnMiOiJLSVdJLUJBU0lDOktJV0kiLCJyb3V0ZV9kYXRhIjoiRlI6MTAyMjpXTUk6MTc3Mjk1MDgwMDpTVE46MTc3Mjk1ODkwMDplY29ub215OkZhbHNlOjo6UlJ8RlI6MjI4MTpTVE46MTc3MzQ5ODkwMDpXTUk6MTc3MzUwNzAwMDplY29ub215OkZhbHNlOjo6UlIiLCJwcmljZSI6IjQ1In0=",
+      "shareId": "eyJyIjoiRlI6MTAyMjpXTUk6MTc3Mjk1MDgwMDpTVE46MTc3Mjk1ODkwMDplY29ub215OkZhbHNlOjo6UlJ8RlI6MjI4MTpTVE46MTc3MzQ5ODkwMDpXTUk6MTc3MzUwNzAwMDplY29ub215OkZhbHNlOjo6UlIiLCJpIjpbIjIzYjAwMzJkNTAyODAwMDAzMWIxYjBjYl8wIiwiMDMyZDIzYjA1MDJlMDAwMDg3YzUwM2JlXzAiXSwidGhjIjowLCJ0YXQiOjAsInZpIjowLCJ0IjoiUlQifQ==",
+      "price": {
+        "amount": "45",
+        "priceBeforeDiscount": "45"
+      },
+      "priceEur": {
+        "amount": "38.100883"
+      },
+      "provider": {
+        "name": "Kiwi.com",
+        "code": "KIWI-BASIC",
+        "hasHighProbabilityOfPriceChange": false,
+        "contentProvider": {
+          "code": "KIWI-BASIC"
+        },
+        "id": "ItineraryProvider:KIWI-BASIC"
+      },
+      "bagsInfo": {
+        "includedCheckedBags": 0,
+        "includedHandBags": 0,
+        "hasNoBaggageSupported": false,
+        "hasNoCheckedBaggage": false,
+        "checkedBagTiers": [
+          {
+            "tierPrice": {
+              "amount": "98.13"
+            },
+            "bags": [
+              {
+                "weight": {
+                  "value": 20
+                }
+              }
+            ]
+          },
+          {
+            "tierPrice": {
+              "amount": "196.27"
+            },
+            "bags": [
+              {
+                "weight": {
+                  "value": 20
+                }
+              }
+            ]
+          }
+        ],
+        "handBagTiers": [
+          {
+            "tierPrice": {
+              "amount": "58.21"
+            },
+            "bags": [
+              {
+                "weight": {
+                  "value": 10
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "bookingOptions": {
+        "edges": [
+          {
+            "node": {
+              "bookingUrl": "/en/booking/?direct=true&locale=en&currency=usd&passengers=1-0-0&token=HWI_CCvfrr_TdBaz28IW-LsyD6apCNuKhmbJmzIH53mkS0G1bOiSD7QYshb5uq0N-Q3lrxMnlaTl3uMrfpdtXayjlipqKmHR6VkvpuIJsLOiG2FsRUQFFawGDpkCnpzbiPVnPGXBfDQ34Il2EWKySu6EHE4eKhSzg8LRul4kfXco1E5qpRonhkM2zgLPF3KxgGn7A_6sOMY3UCipZNT5wUO0S4zoUsHCXajEuxppco3s0d4QmrhAx02SxXK5sMaa4Lb0DCmcD9ap3_9Cj8dSszRC8irD50kVE5fTm0u5Zo9Vv9K0UFdacXiVILrIQkAxpWtGPQq7rrlme9VYP6KczQIh3YOnciUx98TZbiKUSiAKs_TMpLHy8uAAz_vIV34WMz1HZ7j7aGIlo3wVCFrg5CCcfgIjXur6OaibSFaVswn4U3sB7Bp84eFJIXnJL63woAZ19-NrE8ZjkA-LtyvXRRFi4ZHO4quHFzdiGleIt_wZ1a7rZEnZDdw1CXt0cKrsI7sALYQ1554aqFEhURoAkbOZ0F6oRT-ptaOlZQ0g8fnuVmZ7-ysTAZEnTtsbPs2Ud12GDeGPfmIUPXw2RohDlVhNcJNbaYHc7-rHTeSVKZtkCSZ7FP5uSV314QlgWS8F6Dd1r4TsUDmJA9P6a3U05N55Pe9MbZeebPqqlkQIp_oxgo1_tTwur-cBKIoy84_0E9iQWP5xBOsksZcUVcyWl2wM8Ds4ONMM8Jhr5uOAO6-y-Yv_sspTq7lA6T4krwKv_1Pf_5Bn8M-QvpKZvDvmpFiWaVU62Ia49PnnvEMrKS211cWUS4UHY2jJJG1O1vMqTmLLZ-h1ot2w0ZsEfGvYMTCw9ZkbP4E63BRrH2JxErkksymSPqZHS-vvMYs4fl-s_&searchType=return&searchBags=0.0",
+              "itineraryProvider": {
+                "code": "KIWI-BASIC",
+                "name": "Kiwi.com",
+                "subprovider": null,
+                "hasHighProbabilityOfPriceChange": false,
+                "contentProvider": {
+                  "code": "KIWI-BASIC"
+                },
+                "id": "ItineraryProvider:KIWI-BASIC"
+              },
+              "price": {
+                "amount": "45"
+              }
+            }
+          },
+          {
+            "node": {
+              "bookingUrl": "/en/booking/?direct=true&locale=en&currency=usd&passengers=1-0-0&token=HnH1bD4O7A_YmTY-aCy_CKDLA2ZhZ3nUid6uuroFy6C2SC7grOwlPLHgsuUy-dyp75dnWr-CVt7SAwV8BTXmeCc31xWdjL4XQRPawGBig1esZXf0S5xOoGLCot2xukM__383ViJLwKJCzxtvRCwELq9t-hp0Tlei_zBRiWJRBGGDTw4UbF2iB6Qvv-Ozob4Fx9zo2kqcLq1E7A6lZTSTJoZcmPMRcVsXp6taahAmAQew3g8hZj56kp7jvG-aNLOEC7t39PbhfIWI_wTtYANWny1OA2a17UKsxhfQ-W-NdYXcU2C20gsKIltIBJhoelxQoEef63-PBpYdg2ynVnxMIeGZR5yBehwi18RSXpJTdcz4bxdVxxF5mq6CAtSc9x16nKrokxYCkzTm2SPMXJelTRfi70bUZSt09GfmOhXsJtZo7CQDK2Z4K_Bzt1xcYoHyYdS3VSEVx3qmU0ELKCRiky3WUpj7vwAQqtlOlaviV-rOd5LMW24wgdDbpYYn0DbvA392nLDuWcV6FoLwwy3BAixaczB-1oNKbEX9yyjLoVxLnnP7M3K1zYhI713L0MFNrMDGWWptKaljIKMRcdEqHu1kFeZB4pDLTTHA-TLZ1AUuCZywqruIlzkXDtjh9vIVPHYE4EFFmviwM4wsre6B7BioT82DO5qjAwwJnIUPdomOe6qgRyHsFjCFdSzVjTsZMEFpL0BZx1-DvlFxiEVzcJ9dun6bwIHDt-1L6rhcLdAiiAtUF-FS6IFu-nhgr63DNHjLLd5GfF9TYT8m-tw5KU6dVb_cpRD_VWhjEFkU-_IJjiTebgUFTOy0i4BOhGz_wmrCez1P74wcgjKK7tmesyRx52oz6vZ7afO5QgRyb7LPHzpKCHUvPfElr_5h_sLhNtdxttKtP2UljDmZarqNFm5gEcMwNyc6RGWInz7M9fZtyDfwt8AdXfwElem7bJxuOMOgHQFlI0p2uNkp-qo7ZwQtmHmyNHv2_e-cbBguPXIE%3D&searchType=return&searchBags=0.0",
+              "itineraryProvider": {
+                "code": "KIWI",
+                "name": "Kiwi.com",
+                "subprovider": null,
+                "hasHighProbabilityOfPriceChange": false,
+                "contentProvider": {
+                  "code": "KIWI"
+                },
+                "id": "ItineraryProvider:KIWI"
+              },
+              "price": {
+                "amount": "52.815882"
+              }
+            }
+          }
+        ]
+      },
+      "travelHack": {
+        "isTrueHiddenCity": false,
+        "isVirtualInterlining": false,
+        "isThrowawayTicket": false
+      },
+      "legacyId": "23b0032d5028000031b1b0cb_0-032d23b0502e000087c503be_0",
+      "outbound": {
+        "id": "Sector:57ab9a3e792f2a8e9eeecaa158891d3e949c4e05~57ab9a3e792f2a8e9eeecaa158891d3e949c4e05",
+        "sectorSegments": [
+          {
+            "guarantee": null,
+            "segment": {
+              "id": "Segment:57ab9a3e792f2a8e9eeecaa158891d3e949c4e05",
+              "source": {
+                "localTime": "2026-03-08T07:20:00",
+                "utcTime": "2026-03-08T06:20:00",
+                "station": {
+                  "id": "Station:airport:WMI",
+                  "legacyId": "WMI",
+                  "name": "Warsaw Modlin",
+                  "code": "WMI",
+                  "type": "AIRPORT",
+                  "gps": {
+                    "lat": 52.4511111,
+                    "lng": 20.6516667
+                  },
+                  "city": {
+                    "legacyId": "warsaw_pl",
+                    "name": "Warsaw",
+                    "id": "City:warsaw_pl"
+                  },
+                  "country": {
+                    "code": "PL",
+                    "id": "Country:PL"
+                  }
+                }
+              },
+              "destination": {
+                "localTime": "2026-03-08T08:35:00",
+                "utcTime": "2026-03-08T08:35:00",
+                "station": {
+                  "id": "Station:airport:STN",
+                  "legacyId": "STN",
+                  "name": "London Stansted",
+                  "code": "STN",
+                  "type": "AIRPORT",
+                  "gps": {
+                    "lat": 51.885,
+                    "lng": 0.23500000000000001
+                  },
+                  "city": {
+                    "legacyId": "london_gb",
+                    "name": "London",
+                    "id": "City:london_gb"
+                  },
+                  "country": {
+                    "code": "GB",
+                    "id": "Country:GB"
+                  }
+                }
+              },
+              "duration": 8100,
+              "type": "FLIGHT",
+              "code": "1022",
+              "carrier": {
+                "id": "Carrier:11",
+                "name": "Ryanair",
+                "code": "FR"
+              },
+              "operatingCarrier": {
+                "id": "Carrier:1687",
+                "name": "Buzz",
+                "code": "RR"
+              },
+              "cabinClass": "ECONOMY",
+              "hiddenDestination": null,
+              "throwawayDestination": null
+            },
+            "layover": null
+          }
+        ],
+        "duration": 8100
+      },
+      "inbound": {
+        "id": "Sector:ae6e8838d8e971c0d84e4a63a781f10442edfb81~ae6e8838d8e971c0d84e4a63a781f10442edfb81",
+        "sectorSegments": [
+          {
+            "guarantee": null,
+            "segment": {
+              "id": "Segment:ae6e8838d8e971c0d84e4a63a781f10442edfb81",
+              "source": {
+                "localTime": "2026-03-14T14:35:00",
+                "utcTime": "2026-03-14T14:35:00",
+                "station": {
+                  "id": "Station:airport:STN",
+                  "legacyId": "STN",
+                  "name": "London Stansted",
+                  "code": "STN",
+                  "type": "AIRPORT",
+                  "gps": {
+                    "lat": 51.885,
+                    "lng": 0.23500000000000001
+                  },
+                  "city": {
+                    "legacyId": "london_gb",
+                    "name": "London",
+                    "id": "City:london_gb"
+                  },
+                  "country": {
+                    "code": "GB",
+                    "id": "Country:GB"
+                  }
+                }
+              },
+              "destination": {
+                "localTime": "2026-03-14T17:50:00",
+                "utcTime": "2026-03-14T16:50:00",
+                "station": {
+                  "id": "Station:airport:WMI",
+                  "legacyId": "WMI",
+                  "name": "Warsaw Modlin",
+                  "code": "WMI",
+                  "type": "AIRPORT",
+                  "gps": {
+                    "lat": 52.4511111,
+                    "lng": 20.6516667
+                  },
+                  "city": {
+                    "legacyId": "warsaw_pl",
+                    "name": "Warsaw",
+                    "id": "City:warsaw_pl"
+                  },
+                  "country": {
+                    "code": "PL",
+                    "id": "Country:PL"
+                  }
+                }
+              },
+              "duration": 8100,
+              "type": "FLIGHT",
+              "code": "2281",
+              "carrier": {
+                "id": "Carrier:11",
+                "name": "Ryanair",
+                "code": "FR"
+              },
+              "operatingCarrier": {
+                "id": "Carrier:1687",
+                "name": "Buzz",
+                "code": "RR"
+              },
+              "cabinClass": "ECONOMY",
+              "hiddenDestination": null,
+              "throwawayDestination": null
+            },
+            "layover": null
+          }
+        ],
+        "duration": 8100
+      },
+      "stopover": {
+        "nightsCount": 6,
+        "arrival": {
+          "type": "AIRPORT",
+          "city": {
+            "name": "London",
+            "id": "City:london_gb"
+          },
+          "id": "Station:airport:STN"
+        },
+        "departure": {
+          "type": "AIRPORT",
+          "id": "Station:airport:STN"
+        },
+        "duration": 9000
+      },
+      "lastAvailable": {
+        "seatsLeft": null
+      }
+    },
+    {
+      "__typename": "ItineraryReturn",
+      "__isItinerary": "ItineraryReturn",
+      "id": "ItineraryReturn:eyJwcm92aWRlcnMiOiJLSVdJLUJBU0lDOktJV0kiLCJyb3V0ZV9kYXRhIjoiRlI6MTAyMjpXTUk6MTc3NDUwMzkwMDpTVE46MTc3NDUxMjAwMDplY29ub215OkZhbHNlOjo6UlJ8RlI6MTgzNDpTVE46MTc3NjI2ODUwMDpXTUk6MTc3NjI3NjYwMDplY29ub215OkZhbHNlOjo6UlIiLCJwcmljZSI6IjQ1In0=",
+      "shareId": "eyJyIjoiRlI6MTAyMjpXTUk6MTc3NDUwMzkwMDpTVE46MTc3NDUxMjAwMDplY29ub215OkZhbHNlOjo6UlJ8RlI6MTgzNDpTVE46MTc3NjI2ODUwMDpXTUk6MTc3NjI3NjYwMDplY29ub215OkZhbHNlOjo6UlIiLCJpIjpbIjIzYjAwMzJkNTAzYTAwMDBjMjRhNTE0NV8wIiwiMDMyZDIzYjA1MDRlMDAwMDNmNDgxNjliXzAiXSwidGhjIjowLCJ0YXQiOjAsInZpIjowLCJ0IjoiUlQifQ==",
+      "price": {
+        "amount": "45",
+        "priceBeforeDiscount": "45"
+      },
+      "priceEur": {
+        "amount": "38.100883"
+      },
+      "provider": {
+        "name": "Kiwi.com",
+        "code": "KIWI-BASIC",
+        "hasHighProbabilityOfPriceChange": false,
+        "contentProvider": {
+          "code": "KIWI-BASIC"
+        },
+        "id": "ItineraryProvider:KIWI-BASIC"
+      },
+      "bagsInfo": {
+        "includedCheckedBags": 0,
+        "includedHandBags": 0,
+        "hasNoBaggageSupported": false,
+        "hasNoCheckedBaggage": false,
+        "checkedBagTiers": [
+          {
+            "tierPrice": {
+              "amount": "95.04"
+            },
+            "bags": [
+              {
+                "weight": {
+                  "value": 20
+                }
+              }
+            ]
+          },
+          {
+            "tierPrice": {
+              "amount": "190.08"
+            },
+            "bags": [
+              {
+                "weight": {
+                  "value": 20
+                }
+              }
+            ]
+          }
+        ],
+        "handBagTiers": [
+          {
+            "tierPrice": {
+              "amount": "57.75"
+            },
+            "bags": [
+              {
+                "weight": {
+                  "value": 10
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "bookingOptions": {
+        "edges": [
+          {
+            "node": {
+              "bookingUrl": "/en/booking/?direct=true&locale=en&currency=usd&passengers=1-0-0&token=Hs8s2Y6X0acdNIYkdiebz-A8nW5paInolzLRZnQN-fG-GNnKpUWNvST5VmnkSSaexy41uOB1GY30OIZ4GuniXf14MBDILRD9ugh9yKPmHbOfZ7hW-3S1GX6lt8Iz7reQnFg8pfy9icG0g0t5kq10dhXTW2cBQnUzW5F4wv2bz8MHUIuEtqMoz6oNZGkH9HgBx-CbMA8hD_IkB1wYxzl0TrrH-b2wWr4khViKiEyuXsECRWsJq3eB6sAPIPoyuu_e_oBhBWJrrj0MKSic8sGQ1f6iaX2oXFKF8HPoTNqxFOq7rrf73_B_BemI4rNKfSeLKUOorxeEuKuRUcjMRp-N_WhnpUjGfGgZg_Zt-sKLYASv-295fniPHTmcS0ArRPM_cL2g_g2qf9c0RF-EMcKUwPk4tAYkzCv_X_KJ8qUJBunfmkez7vdvAYrNy4TIMQGoxoXlElAzsW6EED8OAuNcKgPpxB8ChMnKAtqjczDudZwi2EsN78U7ls8UjPuGoyjiJebTDc9UmOATT05EEhqxabfZ2Z72dcNUHzMt_lONJX0yrckdHKtVLC6TGc16KYyto6Gpe0iHJ80VSG6k1QpDPhNDAlJjeejG9vDZ-okFxdv9J2a16Wq-7BkleyRWuZGBPFaj2Fz1uYH1i3atQ7Zc6P77FwqfW4fP7WS5svbOpkwbgQ54SUcbLVYbt5DRaFqNz6LZov96d7AJ8x4ZeLlw4YuMDrmlTr6E72lQ7oVN9CS-G0J-ljYeVDc3_4hDkQlr67fxmY-JGZU3zeA06EPjDMHTwnEOVf60c11xty60g6IIITIbtFnbOJQD1aa1soFlvxtW1G2M-VpSNN7K3YIXtDuEdLx3KtOj_c8iuwcB-9UtmQp5-Z8V8xIptmmBVB1S2&searchType=return&searchBags=0.0",
+              "itineraryProvider": {
+                "code": "KIWI-BASIC",
+                "name": "Kiwi.com",
+                "subprovider": null,
+                "hasHighProbabilityOfPriceChange": false,
+                "contentProvider": {
+                  "code": "KIWI-BASIC"
+                },
+                "id": "ItineraryProvider:KIWI-BASIC"
+              },
+              "price": {
+                "amount": "45"
+              }
+            }
+          },
+          {
+            "node": {
+              "bookingUrl": "/en/booking/?direct=true&locale=en&currency=usd&passengers=1-0-0&token=H2oht7ORp8w8_kFzcHhwagGytvMjdCYxweStD5SU5fRPScM91pEHyQmwuDIQZqUqf4iwjGWmSmy3pYEAlNKMAoS3L1ujGu6kOi7LQNdrxoT3E4WSrevC80E-bsDNAUIOFDMADp5Ie6Stup2oGx41ABlzcN1UksZrh0Pqi02zobpdDDUqIF-1GEyd-Zy3EBQlVZyBFshIaowpn_02nhR0uXNfx1wcsRjatbXSSoVLwO5Hjny70ONGO8QqXFVZ8ZI2TDQ7HyVu-0ynTuTQn_5v0AiNYMZEf5Ngj6k3XS62KKS9efDI5kM09xfjiEYVgZlTFAAg-ZXkZXUVVKAC4xEwGLoqEpjG5rgDxBtpN27_n1YFVnaF12nuLXQ_qwSFkceoltEkuvB-KAgdbcSrAVJk6Tj8FAPQ0Ri83UrmoxMlT6azaHtrNIkzsH_A6sixvhD1-crUH7SKIIBhuPsHnGWSxt89wgNb8wUGKMM1stPcznfo182yDdFZPVkw-iafbN1FVJ0d6M3RtRe0n8gkY-W5GTh_HN94tKAHt4cmenryPDn9xYVzxTjmNrXpA-dU8egeeW_p35mjIsp1JcwzbX4fjQ--X-4qS3Cgv8iMkBhXzBPJsE0rvIQEE19wHIpNzxOybOIynKwqAXAg7JOCXpn_acHT2U2x9mwxHZhc26Tg_i9jaD-1SnH3YvdYYI9n53w5hzDrQGm_bHENwsLB4-owd4m99wd5534sBCkh4jUdwhfUbxKL1XYhPc-uQoL8Fv6qlEP2poPxU_GxXBI_FrS0UmfDksk810iasNbZW5LOvYz81IaYr4cIdNvdFNURHJHLs-vhxVy2bol_-t4MHgfmV45dHNz39B327g8YfylCyC7TnQIRS4Yc55aZsg14Kmdwb_HaB8qqUOTb6gOD8dxKSLbJVMNNzZ9YOQaA8wphsNR_fSHndAOT53VUObotW_Lw6a9rnTQ8f0_M-0BUCPsVsrQ%3D%3D&searchType=return&searchBags=0.0",
+              "itineraryProvider": {
+                "code": "KIWI",
+                "name": "Kiwi.com",
+                "subprovider": null,
+                "hasHighProbabilityOfPriceChange": false,
+                "contentProvider": {
+                  "code": "KIWI"
+                },
+                "id": "ItineraryProvider:KIWI"
+              },
+              "price": {
+                "amount": "52.793205"
+              }
+            }
+          }
+        ]
+      },
+      "travelHack": {
+        "isTrueHiddenCity": false,
+        "isVirtualInterlining": false,
+        "isThrowawayTicket": false
+      },
+      "legacyId": "23b0032d503a0000c24a5145_0-032d23b0504e00003f48169b_0",
+      "outbound": {
+        "id": "Sector:cd894f67f847becb3b2b0fd902fb670b4bf3e638~cd894f67f847becb3b2b0fd902fb670b4bf3e638",
+        "sectorSegments": [
+          {
+            "guarantee": null,
+            "segment": {
+              "id": "Segment:cd894f67f847becb3b2b0fd902fb670b4bf3e638",
+              "source": {
+                "localTime": "2026-03-26T06:45:00",
+                "utcTime": "2026-03-26T05:45:00",
+                "station": {
+                  "id": "Station:airport:WMI",
+                  "legacyId": "WMI",
+                  "name": "Warsaw Modlin",
+                  "code": "WMI",
+                  "type": "AIRPORT",
+                  "gps": {
+                    "lat": 52.4511111,
+                    "lng": 20.6516667
+                  },
+                  "city": {
+                    "legacyId": "warsaw_pl",
+                    "name": "Warsaw",
+                    "id": "City:warsaw_pl"
+                  },
+                  "country": {
+                    "code": "PL",
+                    "id": "Country:PL"
+                  }
+                }
+              },
+              "destination": {
+                "localTime": "2026-03-26T08:00:00",
+                "utcTime": "2026-03-26T08:00:00",
+                "station": {
+                  "id": "Station:airport:STN",
+                  "legacyId": "STN",
+                  "name": "London Stansted",
+                  "code": "STN",
+                  "type": "AIRPORT",
+                  "gps": {
+                    "lat": 51.885,
+                    "lng": 0.23500000000000001
+                  },
+                  "city": {
+                    "legacyId": "london_gb",
+                    "name": "London",
+                    "id": "City:london_gb"
+                  },
+                  "country": {
+                    "code": "GB",
+                    "id": "Country:GB"
+                  }
+                }
+              },
+              "duration": 8100,
+              "type": "FLIGHT",
+              "code": "1022",
+              "carrier": {
+                "id": "Carrier:11",
+                "name": "Ryanair",
+                "code": "FR"
+              },
+              "operatingCarrier": {
+                "id": "Carrier:1687",
+                "name": "Buzz",
+                "code": "RR"
+              },
+              "cabinClass": "ECONOMY",
+              "hiddenDestination": null,
+              "throwawayDestination": null
+            },
+            "layover": null
+          }
+        ],
+        "duration": 8100
+      },
+      "inbound": {
+        "id": "Sector:3bff72ff5efc7e9a08142580c5192055c6153743~3bff72ff5efc7e9a08142580c5192055c6153743",
+        "sectorSegments": [
+          {
+            "guarantee": null,
+            "segment": {
+              "id": "Segment:3bff72ff5efc7e9a08142580c5192055c6153743",
+              "source": {
+                "localTime": "2026-04-15T16:55:00",
+                "utcTime": "2026-04-15T15:55:00",
+                "station": {
+                  "id": "Station:airport:STN",
+                  "legacyId": "STN",
+                  "name": "London Stansted",
+                  "code": "STN",
+                  "type": "AIRPORT",
+                  "gps": {
+                    "lat": 51.885,
+                    "lng": 0.23500000000000001
+                  },
+                  "city": {
+                    "legacyId": "london_gb",
+                    "name": "London",
+                    "id": "City:london_gb"
+                  },
+                  "country": {
+                    "code": "GB",
+                    "id": "Country:GB"
+                  }
+                }
+              },
+              "destination": {
+                "localTime": "2026-04-15T20:10:00",
+                "utcTime": "2026-04-15T18:10:00",
+                "station": {
+                  "id": "Station:airport:WMI",
+                  "legacyId": "WMI",
+                  "name": "Warsaw Modlin",
+                  "code": "WMI",
+                  "type": "AIRPORT",
+                  "gps": {
+                    "lat": 52.4511111,
+                    "lng": 20.6516667
+                  },
+                  "city": {
+                    "legacyId": "warsaw_pl",
+                    "name": "Warsaw",
+                    "id": "City:warsaw_pl"
+                  },
+                  "country": {
+                    "code": "PL",
+                    "id": "Country:PL"
+                  }
+                }
+              },
+              "duration": 8100,
+              "type": "FLIGHT",
+              "code": "1834",
+              "carrier": {
+                "id": "Carrier:11",
+                "name": "Ryanair",
+                "code": "FR"
+              },
+              "operatingCarrier": {
+                "id": "Carrier:1687",
+                "name": "Buzz",
+                "code": "RR"
+              },
+              "cabinClass": "ECONOMY",
+              "hiddenDestination": null,
+              "throwawayDestination": null
+            },
+            "layover": null
+          }
+        ],
+        "duration": 8100
+      },
+      "stopover": {
+        "nightsCount": 20,
+        "arrival": {
+          "type": "AIRPORT",
+          "city": {
+            "name": "London",
+            "id": "City:london_gb"
+          },
+          "id": "Station:airport:STN"
+        },
+        "departure": {
+          "type": "AIRPORT",
+          "id": "Station:airport:STN"
+        },
+        "duration": 29275
+      },
+      "lastAvailable": {
+        "seatsLeft": null
+      }
+    }
+  ]
+}
