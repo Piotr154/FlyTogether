@@ -1,0 +1,18 @@
+# Biblioteki
+**/node_modules/
+
+# Klucz API
+.env
+**/.env
+
+# Buildy
+**/dist/
+**/dist-ssr/
+
+# Dla macOS
+.DS_Store
+**/.DS_Store
+
+# Logi błędów
+*.log
+npm-debug.log*
