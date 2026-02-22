@@ -37,13 +37,7 @@ function App() {
     setReturnDate(e.target.value);
   }
   const clearForm = () => {
-    for (let i=0; i<groupSize; i++){
-      setOrigin(prevOrigin => {
-        const newOrigin = [...prevOrigin];
-        newOrigin[i] = "";
-        return newOrigin;
-      })
-    }
+    setOrigin(new Array(origin.length).fill(""));
     setDestination("");
     setDepartureDate("");
     setReturnDate("");
@@ -52,6 +46,11 @@ function App() {
     e.preventDefault();
     alert("Search submitted!");
     clearForm();
+  }
+
+  const randomOriginPlaceholder = () => {
+    const cities = ["Berlin", "Paris", "Madrid", "Rome", "Amsterdam", "Prague", "Vienna", "Warsaw", "Budapest", "Dublin"];
+    return cities[Math.floor(Math.random() * cities.length)];
   }
 
   return (
@@ -68,8 +67,8 @@ function App() {
               <InputField 
                 key={index} 
                 type="text"
-                label={`Origin ${index + 1}`} 
-                placeholder="Berlin" 
+                label={`Friend ${index + 1}`} 
+                placeholder= {randomOriginPlaceholder()} 
                 value = {singleOrigin}
                 onChange = {(e) => handleOriginChange(e, index)} />
               )}
@@ -91,12 +90,14 @@ function App() {
               placeholder="Select a date" 
               value = {returnDate}
               onChange = {handleReturnDateChange} />
+              <div className="row">
               <button type = "submit">
                 Search
               </button>
               <button type = "reset" onClick={clearForm}>
                 Reset
               </button> 
+              </div>
           </fieldset>
       </form>
   )
