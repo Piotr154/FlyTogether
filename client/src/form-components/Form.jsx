@@ -5,11 +5,11 @@ import { SelectField } from './SelectField'
 
 const today = new Date();
 today.setHours(0, 0, 0, 0);
-const cities = ["BER", "STN", "Paris", "City:dubrovnik_hr", "Madrid", "Rome", "Amsterdam", "Prague", "Vienna", "WAW", "Budapest", "Dublin", "Copenhagen", "Stockholm", "Oslo", "Helsinki", "Lisbon", "Brussels", "Athens", "Zagreb", "Belgrade", "New York"];
+const cities = ["BER", "STN", "Paris", "City:dubrovnik_hr", "Madrid", "Rome", "Amsterdam", "Prague", "Vienna", "WMI", "Budapest", "Dublin", "Copenhagen", "Stockholm", "Oslo", "Helsinki", "Lisbon", "Brussels", "Athens", "Zagreb", "Belgrade", "New York"];
 const randomCity = () => {
   return cities[Math.floor(Math.random() * cities.length)];
 }
-const options = cities.map(city => ({ value: city.toLowerCase(), label: city }))
+const options = cities.map(city => ({ value: city, label: city }))
 
 
 const normalizeDate = (dateInput) => {
@@ -91,12 +91,12 @@ export const Form = () => {
     console.log("Sending data:", payload);
 
     try {
-      const response = await fetch('http://localhost:3000/api/flights/search', {
-        method: 'POST',
+      const queryString = new URLSearchParams(payload).toString();
+      const response = await fetch(`http://localhost:3000/api/flights/search?${queryString}`, {
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(payload),
       });
 
       if (!response.ok) {
@@ -105,7 +105,7 @@ export const Form = () => {
 
       const data = await response.json();
       console.log("Received flights:", data);
-      alert(`Found ${data.length || 0} flight options.`);
+      alert(`Found ${data.data.length || 0} flight options.`);
 
       clearForm();
 

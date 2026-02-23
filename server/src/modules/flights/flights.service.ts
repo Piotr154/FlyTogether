@@ -22,9 +22,9 @@ export const SearchFlights = async (query: SearchFlightQuery): Promise<CommonDes
             destination: query.to,
             outboundDepartureDateStart: apiFormattedStartDate,
             outboundDepartureDateEnd: apiFormattedEndDate,
-            transportTypes: 'FLIGHTS',
+            transportTypes: 'FLIGHT',
             currency: 'EUR',
-            limit: '300'
+            limit: '5'
         };
 
         if (query.inboundDateStart) {
@@ -65,7 +65,7 @@ export const SearchFlights = async (query: SearchFlightQuery): Promise<CommonDes
             return flightsList.map((item: any) => {
                 const outboundSegment = item.outbound?.sectorSegments?.[0]?.segment;
                 const inboundSegment = item.inbound?.sectorSegments?.[0]?.segment;
-                
+
                 // If either outbound or inbound is missing, skip this flight entirely
                 if (!outboundSegment || !inboundSegment) return null;
 
@@ -78,11 +78,11 @@ export const SearchFlights = async (query: SearchFlightQuery): Promise<CommonDes
                     inboundDuration: Math.floor((item.inbound?.duration || 0) / 60),
                     airline: outboundSegment.carrier?.name || 'Unknown',
                     deep_link: `https://www.kiwi.com${item.bookingOptions?.edges?.[0]?.node?.bookingUrl || ''}`,
-                    
+
                     // OUTBOUND dates
                     outboundDepartureTime: outboundSegment.source?.localTime,
                     outboundArrivalTime: outboundSegment.destination?.localTime,
-                    
+
                     // INBOUND dates
                     inboundDepartureTime: inboundSegment.source?.localTime,
                     inboundArrivalTime: inboundSegment.destination?.localTime,
@@ -115,7 +115,7 @@ export const SearchFlights = async (query: SearchFlightQuery): Promise<CommonDes
         let everyoneCanFlyHere = true;
         let totalCost = 0;
         const selectedFlights: Flight[] = [];
-        
+
         for (const originCity of origins) {
             const trimmedOrigin = originCity.trim();
 
@@ -139,7 +139,7 @@ export const SearchFlights = async (query: SearchFlightQuery): Promise<CommonDes
                 flights: selectedFlights
             });
         }
-    } 
+    }
     commonDestinations.sort((a, b) => a.totalPrice - b.totalPrice);
     console.log(`MATCHMAKER: Found ${commonDestinations.length} matching destinations!`);
 
