@@ -4,11 +4,12 @@ import { NumberField } from './NumberField'
 import { SelectField } from './SelectField'
 
 const today = new Date();
-const cities = ["Berlin", "Paris", "Madrid", "Rome", "Amsterdam", "Prague", "Vienna", "Warsaw", "Budapest", "Dublin", "Copenhagen", "Stockholm", "Oslo", "Helsinki", "Lisbon", "Brussels", "Athens", "Zagreb", "Belgrade", "New York"];
+today.setHours(0, 0, 0, 0);
+const cities = ["BER", "STN", "Paris", "City:dubrovnik_hr", "Madrid", "Rome", "Amsterdam", "Prague", "Vienna", "WAW", "Budapest", "Dublin", "Copenhagen", "Stockholm", "Oslo", "Helsinki", "Lisbon", "Brussels", "Athens", "Zagreb", "Belgrade", "New York"];
 const randomCity = () => {
-    return cities[Math.floor(Math.random() * cities.length)];
-  }
-const options = cities.map(city => ({value: city.toLowerCase(), label: city}))
+  return cities[Math.floor(Math.random() * cities.length)];
+}
+const options = cities.map(city => ({ value: city.toLowerCase(), label: city }))
 
 
 const normalizeDate = (dateInput) => {
@@ -31,14 +32,14 @@ export const Form = () => {
   const [departureDate, setDepartureDate] = useState("");
   const [returnDate, setReturnDate] = useState("");
   const [dateMargin, setDateMargin] = useState(0);
-  const [placeholderOrigin, setPlaceholderOrigin] = useState(()=> Array.from({length: groupSize}, () => randomCity()));
+  const [placeholderOrigin, setPlaceholderOrigin] = useState(() => Array.from({ length: groupSize }, () => randomCity()));
   const [placeholderDestination, setPlaceholderDestination] = useState(randomCity());
-  
-  
+
+
   useEffect(() => {
     setOrigin(prevOrigin => {
       let newOrigin = [];
-      for (let i=0; i<groupSize; i++){
+      for (let i = 0; i < groupSize; i++) {
         newOrigin.push(prevOrigin[i] || "");
       }
       return newOrigin;
@@ -46,24 +47,24 @@ export const Form = () => {
 
     setPlaceholderOrigin(prevPlaceholderOrigin => {
       let newPlaceholderOrigin = [];
-      for (let i=0; i<groupSize; i++){
+      for (let i = 0; i < groupSize; i++) {
         newPlaceholderOrigin.push(prevPlaceholderOrigin[i] || randomCity());
       }
       return newPlaceholderOrigin;
     })
-    }, [groupSize]);
+  }, [groupSize]);
 
 
   const handleOriginChange = (selectedOption, index) => {
-      setOrigin(prevOrigin => {
-        const newOrigin = [...prevOrigin];
-        newOrigin[index] = selectedOption ? selectedOption.value : "" ;
-        return newOrigin;
-      })
+    setOrigin(prevOrigin => {
+      const newOrigin = [...prevOrigin];
+      newOrigin[index] = selectedOption ? selectedOption.value : "";
+      return newOrigin;
+    })
   }
   const handleDestinationChange = (selectedOption) => {
     setDestination(selectedOption ? selectedOption.value : "");
-  } 
+  }
   const handleDepartureDateChange = (e) => {
     setDepartureDate(e.target.value);
   }
@@ -79,12 +80,12 @@ export const Form = () => {
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     const payload = {
-      origin: origin,               // Array: ["Berlin", "Paris"]
-      destination: destination,     // String: "New York"
-      departureDate: departureDate, // String: "2024-12-01"
-      returnDate: returnDate,       // String: "2024-12-15"
+      from: origin.join(','),               // Array: ["Berlin", "Paris"]
+      to: destination,     // String: "New York"
+      outboundDateStart: departureDate, // String: "2024-12-01"
+      inboundDateStart: returnDate,       // String: "2024-12-15"
       dateMargin: dateMargin        // Number: e.g. 2
     };
     console.log("Sending data:", payload);
@@ -106,8 +107,8 @@ export const Form = () => {
       console.log("Received flights:", data);
       alert(`Found ${data.length || 0} flight options.`);
 
-      clearForm(); 
-      
+      clearForm();
+
     } catch (error) {
       console.error("Error occurred:", error);
       alert("Failed to retrieve flights. Please try again later.");
@@ -124,17 +125,17 @@ export const Form = () => {
   );
 
   return (
-      <form onSubmit={handleSubmit}>
-          <fieldset>
-            <h2>FlyTogether</h2>
-            <NumberField 
-              label="Group size"
-              value={groupSize}
-              minValue={1}
-              maxValue={10}
-              setFunction={setGroupSize}
-              canBeTyped={false}
-            />
+    <form onSubmit={handleSubmit}>
+      <fieldset>
+        <h2>FlyTogether</h2>
+        <NumberField
+          label="Group size"
+          value={groupSize}
+          minValue={1}
+          maxValue={10}
+          setFunction={setGroupSize}
+          canBeTyped={false}
+        />
               {(groupSize === 1 ? 
                 <SelectField 
                   key={0} 
