@@ -17,18 +17,34 @@ export const SearchFlights = async (query: SearchFlightQuery): Promise<CommonDes
 
     // 2. Create an array of Promises (each origin gets its own API request)
     const flightRequests = origins.map(async (cityCode) => {
+        const kiwiParams: Record<string, any> = {
+            source: cityCode.trim(),
+            destination: query.to,
+            outboundDepartureDateStart: apiFormattedStartDate,
+            outboundDepartureDateEnd: apiFormattedEndDate,
+            transportTypes: 'FLIGHTS',
+            currency: 'EUR',
+            limit: '300'
+        };
+
+        if (query.inboundDateStart) {
+            kiwiParams.inboundDepartureDateStart = `${query.inboundDateStart}T00:00:00`;
+            const inboundEnd = query.inboundDateEnd || query.inboundDateStart;
+            kiwiParams.inboundDepartureDateEnd = `${inboundEnd}T23:59:59`;
+        }
+
+        if (query.nightsInDestFrom) {
+            kiwiParams.nights_in_dst_from = query.nightsInDestFrom;
+        }
+
+        if (query.nightsInDestTo) {
+            kiwiParams.nights_in_dst_to = query.nightsInDestTo;
+        }
+
         const options = {
             method: 'GET',
             url: 'https://kiwi-com-cheap-flights.p.rapidapi.com/round-trip',
-            params: {
-                source: cityCode.trim(), // Remove any accidental spaces
-                destination: query.to,
-                outboundDepartureDateStart: apiFormattedStartDate,
-                outboundDepartureDateEnd: apiFormattedEndDate,
-                transportTypes: 'FLIGHT',
-                currency: 'EUR',
-                limit: '300' // Fetch the top 1 cheapest flights per city
-            },
+            params: kiwiParams,
             headers: {
                 'x-rapidapi-key': process.env.RAPIDAPI_KEY,
                 'x-rapidapi-host': process.env.RAPIDAPI_HOST
