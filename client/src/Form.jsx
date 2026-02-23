@@ -3,6 +3,8 @@ import { InputField } from './inputField'
 import { NumberField } from './numberField'
 import { SelectField } from './SelectField'
 
+const today = new Date();
+today.setHours(0, 0, 0, 0);
 const cities = ["Berlin", "Paris", "Madrid", "Rome", "Amsterdam", "Prague", "Vienna", "Warsaw", "Budapest", "Dublin", "Copenhagen", "Stockholm", "Oslo", "Helsinki", "Lisbon", "Brussels", "Athens", "Zagreb", "Belgrade", "New York"];
 const randomCity = () => {
     return cities[Math.floor(Math.random() * cities.length)];
@@ -10,7 +12,7 @@ const randomCity = () => {
 const options = cities.map(city => ({value: city.toLowerCase(), label: city}))
 
 export const Form = () => {
-  const [groupSize, setGroupSize] = useState(2);
+  const [groupSize, setGroupSize] = useState(1);
   const [origin, setOrigin] = useState(new Array(groupSize).fill(""));
   const [destination, setDestination] = useState("");
   const [departureDate, setDepartureDate] = useState("");
@@ -99,37 +101,48 @@ export const Form = () => {
       alert("Failed to retrieve flights. Please try again later.");
     }
   }
+  
   const canSearch = !(
     origin.some(city => city.length === 0) || 
     destination.length === 0 || 
     departureDate === "" || 
     returnDate === "" || 
     new Date(departureDate) > new Date(returnDate) ||
-    new Date() > new Date(departureDate)
+    today > new Date(departureDate)
   );
 
   return (
       <form onSubmit={handleSubmit}>
           <fieldset>
-            <h2>FlyTogether</h2>
+            <h2>FlyAlone</h2>
             <NumberField 
               label="Group size"
               value={groupSize}
-              minValue={2}
+              minValue={1}
               setFunction={setGroupSize}
               canBeTyped={false}
             />
-              {origin.map((singleOrigin, index) =>
+              {(groupSize === 1 ? 
+                <SelectField 
+                  key={0} 
+                  id={'user'}  
+                  label={'Starting point'} 
+                  placeholder= {placeholderOrigin[0]} 
+                  value = {origin[0]}
+                  options = {options}
+                  onChange = {(val) => handleOriginChange(val, 0)} 
+                />
+                : origin.map((singleOrigin, index) =>
                 <SelectField 
                   key={index} 
-                  id={`friend-${index}`}  
-                  label={`Friend ${index + 1}`} 
+                  id={`starting-point-${index}`}  
+                  label={`Starting point ${index + 1}`} 
                   placeholder= {placeholderOrigin[index]} 
                   value = {singleOrigin}
                   options = {options}
                   onChange = {(val) => handleOriginChange(val, index)} 
                 />
-              )}
+              ))}
             <SelectField 
               id="destination"
               label="Destination" 
