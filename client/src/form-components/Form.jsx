@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { InputField } from './inputField'
-import { NumberField } from './numberField'
+import { InputField } from './InputField'
+import { NumberField } from './NumberField'
 import { SelectField } from './SelectField'
 
 const today = new Date();
@@ -91,7 +91,6 @@ export const Form = () => {
 
       const data = await response.json();
       console.log("Received flights:", data);
-      
       alert(`Found ${data.length || 0} flight options.`);
 
       clearForm(); 
@@ -108,17 +107,19 @@ export const Form = () => {
     departureDate === "" || 
     returnDate === "" || 
     new Date(departureDate) > new Date(returnDate) ||
-    today > new Date(departureDate)
+    today > new Date(departureDate) ||
+    isNaN(dateMargin)
   );
 
   return (
       <form onSubmit={handleSubmit}>
           <fieldset>
-            <h2>FlyAlone</h2>
+            <h2>FlyTogether</h2>
             <NumberField 
               label="Group size"
               value={groupSize}
               minValue={1}
+              maxValue={10}
               setFunction={setGroupSize}
               canBeTyped={false}
             />
@@ -169,9 +170,9 @@ export const Form = () => {
               label="Date margin (+/- days)"
               value={dateMargin}
               minValue = {0}
-              setFunction={setDateMargin}
+              maxValue = {90}
               canBeTyped={true}
-              onChange={(e) => setDateMargin(Math.max(0, parseInt(e.target.value)))}
+              setFunction={setDateMargin}
             />
             <div className="row">
               <button type = "submit" disabled={!canSearch}>
