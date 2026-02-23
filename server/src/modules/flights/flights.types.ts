@@ -11,7 +11,8 @@ export interface Flight {
     inboundArrivalTime: string;
 
     price: number;
-    duration: number;
+    outboundDuration: number;
+    inboundDuration: number;
     airline: string;
     deep_link: string;
 }

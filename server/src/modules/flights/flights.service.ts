@@ -58,7 +58,8 @@ export const SearchFlights = async (query: SearchFlightQuery): Promise<CommonDes
                     origin: outboundSegment.source?.station?.code,
                     destination: outboundSegment.destination?.station?.code,
                     price: parseFloat(item.price?.amount || '0'),
-                    duration: Math.floor(((item.outbound?.duration || 0) + (item.inbound?.duration || 0)) / 60),
+                    outboundDuration: Math.floor((item.outbound?.duration || 0) / 60),
+                    inboundDuration: Math.floor((item.inbound?.duration || 0) / 60),
                     airline: outboundSegment.carrier?.name || 'Unknown',
                     deep_link: `https://www.kiwi.com${item.bookingOptions?.edges?.[0]?.node?.bookingUrl || ''}`,
                     

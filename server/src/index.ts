@@ -20,5 +20,5 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 app.use('/api/flights', flightsRouter);
 
 app.listen(PORT, () => {
-    console.log('Server works on http://localhost:${PORT}');
+    console.log(`Server works on http://localhost:${PORT}`);
 });
