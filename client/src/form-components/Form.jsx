@@ -1,15 +1,28 @@
 import { useEffect, useState } from 'react'
-import { InputField } from './InputField'
+import { DateField } from './DateField'
 import { NumberField } from './NumberField'
 import { SelectField } from './SelectField'
 
 const today = new Date();
-today.setHours(0, 0, 0, 0);
 const cities = ["Berlin", "Paris", "Madrid", "Rome", "Amsterdam", "Prague", "Vienna", "Warsaw", "Budapest", "Dublin", "Copenhagen", "Stockholm", "Oslo", "Helsinki", "Lisbon", "Brussels", "Athens", "Zagreb", "Belgrade", "New York"];
 const randomCity = () => {
     return cities[Math.floor(Math.random() * cities.length)];
   }
 const options = cities.map(city => ({value: city.toLowerCase(), label: city}))
+
+
+const normalizeDate = (dateInput) => {
+  if (!dateInput) return null;
+
+  if (typeof dateInput === 'string') {
+    const [year, month, day] = dateInput.split('-').map(Number);
+    return new Date(year, month - 1, day, 0, 0, 0, 0);
+  }
+
+  const copy = new Date(dateInput);
+  copy.setHours(0, 0, 0, 0);
+  return copy;
+}
 
 export const Form = () => {
   const [groupSize, setGroupSize] = useState(1);
@@ -100,14 +113,13 @@ export const Form = () => {
       alert("Failed to retrieve flights. Please try again later.");
     }
   }
-  
   const canSearch = !(
     origin.some(city => city.length === 0) || 
     destination.length === 0 || 
     departureDate === "" || 
     returnDate === "" || 
-    new Date(departureDate) > new Date(returnDate) ||
-    today > new Date(departureDate) ||
+    normalizeDate(departureDate) > normalizeDate(returnDate) ||
+    normalizeDate(today) > normalizeDate(departureDate) ||
     isNaN(dateMargin)
   );
 
@@ -152,19 +164,23 @@ export const Form = () => {
               options = {options}
               onChange = {handleDestinationChange} 
             />
-            <InputField 
+            <div>
+            <DateField 
               id="departure-date"
-              type="date"
               label="Departure date" 
               value = {departureDate}
               onChange = {handleDepartureDateChange} 
+              departureDate={normalizeDate(departureDate)} 
+              today={normalizeDate(today)} 
             />
-            <InputField 
+            </div>
+            <DateField 
               id="return-date"
-              type="date"
               label="Return date" 
               value = {returnDate}
               onChange = {handleReturnDateChange} 
+              departureDate={normalizeDate(departureDate)}
+              returnDate={normalizeDate(returnDate)}
             />
             <NumberField 
               label="Date margin (+/- days)"

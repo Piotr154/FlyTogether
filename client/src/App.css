@@ -34,9 +34,10 @@ h2 {
 }
 
 .FormField {
+  position: relative;
   display: flex;
   flex-direction: column;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 label {
@@ -137,4 +138,11 @@ button:disabled {
 .my-react-select__input-container {
   margin: 0 !important;
   padding: 0 !important;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  position: absolute;
+  bottom: -27px;
 }

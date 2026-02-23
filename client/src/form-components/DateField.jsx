@@ -1,6 +1,8 @@
 import {useState} from 'react'
+import { DateErrorMessage } from './DateErrorMessage'
 
-export const InputField = ({type, id, label, placeholder, value, onChange}) => {
+
+export const DateField = ({id, label, placeholder, value, onChange, today, departureDate, returnDate}) => {
   const [isTouched, setIsTouched] = useState(false);
 
   const handleBlur = () => {
@@ -12,11 +14,17 @@ export const InputField = ({type, id, label, placeholder, value, onChange}) => {
       <label htmlFor={id}>{label}</label>
       <input
         id={id}
-        type={type}
+        type="date"
         placeholder={placeholder}
         value={value}
         onChange={onChange}
         onBlur={handleBlur}
+      />
+      <DateErrorMessage 
+        datetype={id} 
+        departureDate={departureDate} 
+        returnDate={returnDate} 
+        today={today} 
       />
     </div>
   );
