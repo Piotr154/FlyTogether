@@ -8,7 +8,7 @@ export const InputField = ({type, id, label, placeholder, value, onChange}) => {
   };
 
   return (
-    <div className="Field">
+    <div className="FormField InputField">
       <label htmlFor={id}>{label}</label>
       <input
         id={id}

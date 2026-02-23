@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
 import { InputField } from './inputField'
 import { NumberField } from './numberField'
+import { SelectField } from './SelectField'
 
 const cities = ["Berlin", "Paris", "Madrid", "Rome", "Amsterdam", "Prague", "Vienna", "Warsaw", "Budapest", "Dublin", "Copenhagen", "Stockholm", "Oslo", "Helsinki", "Lisbon", "Brussels", "Athens", "Zagreb", "Belgrade", "New York"];
 const randomCity = () => {
     return cities[Math.floor(Math.random() * cities.length)];
   }
+const options = cities.map(city => ({value: city.toLowerCase(), label: city}))
 
 export const Form = () => {
   const [groupSize, setGroupSize] = useState(2);
@@ -37,15 +39,15 @@ export const Form = () => {
     }, [groupSize]);
 
 
-  const handleOriginChange = (e, index) => {
+  const handleOriginChange = (selectedOption, index) => {
       setOrigin(prevOrigin => {
         const newOrigin = [...prevOrigin];
-        newOrigin[index] = e.target.value;
+        newOrigin[index] = selectedOption ? selectedOption.value : "" ;
         return newOrigin;
       })
   }
-  const handleDestinationChange = (e) => {
-    setDestination(e.target.value);
+  const handleDestinationChange = (selectedOption) => {
+    setDestination(selectedOption ? selectedOption.value : "");
   } 
   const handleDepartureDateChange = (e) => {
     setDepartureDate(e.target.value);
@@ -98,8 +100,8 @@ export const Form = () => {
     }
   }
   const canSearch = !(
-    origin.some(city => city.length < 2) || 
-    destination.length < 2 || 
+    origin.some(city => city.length === 0) || 
+    destination.length === 0 || 
     departureDate === "" || 
     returnDate === "" || 
     new Date(departureDate) > new Date(returnDate) ||
@@ -115,24 +117,25 @@ export const Form = () => {
               value={groupSize}
               minValue={2}
               setFunction={setGroupSize}
+              canBeTyped={false}
             />
               {origin.map((singleOrigin, index) =>
-                <InputField 
+                <SelectField 
                   key={index} 
-                  id={`friend-${index}`} 
-                  type="text" 
+                  id={`friend-${index}`}  
                   label={`Friend ${index + 1}`} 
                   placeholder= {placeholderOrigin[index]} 
                   value = {singleOrigin}
-                  onChange = {(e) => handleOriginChange(e, index)} 
+                  options = {options}
+                  onChange = {(val) => handleOriginChange(val, index)} 
                 />
               )}
-            <InputField 
+            <SelectField 
               id="destination"
-              type="text"
               label="Destination" 
               placeholder={placeholderDestination} 
               value = {destination}
+              options = {options}
               onChange = {handleDestinationChange} 
             />
             <InputField 
@@ -154,6 +157,8 @@ export const Form = () => {
               value={dateMargin}
               minValue = {0}
               setFunction={setDateMargin}
+              canBeTyped={true}
+              onChange={(e) => setDateMargin(Math.max(0, parseInt(e.target.value)))}
             />
             <div className="row">
               <button type = "submit" disabled={!canSearch}>

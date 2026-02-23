@@ -4,6 +4,11 @@
   justify-content: center;
   align-items: center;
 }
+input, button, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
 form{
   margin-top: 20px;
   display: flex;
@@ -19,6 +24,7 @@ fieldset {
   border-radius: 8px;
   background-color: white;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  font-size: 13px;
 }
 
 h2 {
@@ -27,7 +33,7 @@ h2 {
   color: #333;
 }
 
-.Field {
+.FormField {
   display: flex;
   flex-direction: column;
   margin-bottom: 16px;
@@ -35,7 +41,7 @@ h2 {
 
 label {
   margin-bottom: 6px;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
 }
 
@@ -52,7 +58,7 @@ input:read-only{
   cursor: default; 
   user-select: none;
 }
-input:read-only[type=number]::-webkit-inner-spin-button {
+input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
@@ -103,4 +109,33 @@ button:disabled {
 .input-number-container>button{
   font-size: 18px;
   padding: 6px;
+}
+
+.my-react-select__control {
+  min-height: 36px !important;
+  height: 36px !important;
+  border-radius: 4px !important;
+  border: 1px solid #ccc !important;
+  align-items: center !important;
+}
+
+.my-react-select__value-container {
+  height: 36px;
+  padding: 0 6px !important;
+  display: flex !important;
+  align-items: center !important;
+  
+}
+
+.my-react-select__indicators {
+  height: 34px !important;
+}
+
+.my-react-select__indicator {
+  padding: 4px !important;
+}
+
+.my-react-select__input-container {
+  margin: 0 !important;
+  padding: 0 !important;
 }
