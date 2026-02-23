@@ -1,6 +1,6 @@
 import {useState} from 'react'
 
-export const InputField = ({type, label, placeholder, value, onChange}) => {
+export const InputField = ({type, id, label, placeholder, value, onChange}) => {
   const [isTouched, setIsTouched] = useState(false);
 
   const handleBlur = () => {
@@ -9,9 +9,9 @@ export const InputField = ({type, label, placeholder, value, onChange}) => {
 
   return (
     <div className="Field">
-      <label htmlFor={label}>{label}</label>
+      <label htmlFor={id}>{label}</label>
       <input
-        id={label}
+        id={id}
         type={type}
         placeholder={placeholder}
         value={value}

@@ -24,7 +24,7 @@ fieldset {
 h2 {
   margin-top: 0;
   text-align: center;
-  color: darkblue;
+  color: #333;
 }
 
 .Field {
@@ -46,6 +46,25 @@ input {
   padding: 0 10px;
 }
 
+input:read-only{
+  width: 60%;
+  outline: none; 
+  cursor: default; 
+  user-select: none;
+}
+input:read-only[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input-number-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
 .row {
   display: flex;
   flex-direction: row;
@@ -60,7 +79,7 @@ button {
   padding: 12px;
   border-radius: 4px;
   border: none;
-  background-color: darkblue;
+  background-color: #666;
   color: white;
   text-transform: uppercase;
   font-weight: bold;
@@ -68,10 +87,20 @@ button {
   transition: opacity 0.2s;
 }
 
-button[type="reset"] {
+button[type="button"] {
   background-color: #666;
 }
 
 button:hover {
   opacity: 0.9;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: default;
+}
+
+.input-number-container>button{
+  font-size: 18px;
+  padding: 6px;
 }
