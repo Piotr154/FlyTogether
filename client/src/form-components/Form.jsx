@@ -191,12 +191,12 @@ export const Form = () => {
               setFunction={setDateMargin}
             />
             <div className="row">
-              <button type = "submit" disabled={!canSearch}>
-                Search
-              </button>
               <button type = "button" onClick={clearForm}>
                 Clear
               </button> 
+              <button type = "submit" disabled={!canSearch}>
+                Search
+              </button>
             </div>
           </fieldset>
       </form>
