@@ -11,6 +11,12 @@ const randomCity = () => {
 }
 const options = cities.map(city => ({ value: city, label: city }))
 
+const adjustDateByDays = (dateString, days) => {
+  if (!dateString) return undefined;
+  const date = newDate(dateString);
+  date.setDate(date.getDate() + days);
+  return date.toISOString().split('T')[0];
+}
 
 const normalizeDate = (dateInput) => {
   if (!dateInput) return null;
@@ -80,13 +86,15 @@ export const Form = () => {
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const margin = parseInt(dateMargin, 10) || 0;
 
     const payload = {
       from: origin.join(','),               // Array: ["Berlin", "Paris"]
       to: destination,     // String: "New York"
-      outboundDateStart: departureDate, // String: "2024-12-01"
-      inboundDateStart: returnDate,       // String: "2024-12-15"
-      dateMargin: dateMargin        // Number: e.g. 2
+      outboundDateStart: adjustDateByDays(departureDate, -margin), // String: "2024-12-01"
+      outboundDateEnd: adjustDateByDays(departureDate, margin),
+      inboundDateStart: adjustDateByDays(returnDate, -margin),       // String: "2024-12-15"
+      inboundDateEnd: adjustDateByDays(returnDate, margin),
     };
     console.log("Sending data:", payload);
 
@@ -115,10 +123,10 @@ export const Form = () => {
     }
   }
   const canSearch = !(
-    origin.some(city => city.length === 0) || 
-    destination.length === 0 || 
-    departureDate === "" || 
-    returnDate === "" || 
+    origin.some(city => city.length === 0) ||
+    destination.length === 0 ||
+    departureDate === "" ||
+    returnDate === "" ||
     normalizeDate(departureDate) > normalizeDate(returnDate) ||
     normalizeDate(today) > normalizeDate(departureDate) ||
     isNaN(dateMargin)
@@ -136,70 +144,70 @@ export const Form = () => {
           setFunction={setGroupSize}
           canBeTyped={false}
         />
-              {(groupSize === 1 ? 
-                <SelectField 
-                  key={0} 
-                  id={'user'}  
-                  label={'Starting point'} 
-                  placeholder= {placeholderOrigin[0]} 
-                  value = {origin[0]}
-                  options = {options}
-                  onChange = {(val) => handleOriginChange(val, 0)} 
-                />
-                : origin.map((singleOrigin, index) =>
-                <SelectField 
-                  key={index} 
-                  id={`starting-point-${index}`}  
-                  label={`Starting point ${index + 1}`} 
-                  placeholder= {placeholderOrigin[index]} 
-                  value = {singleOrigin}
-                  options = {options}
-                  onChange = {(val) => handleOriginChange(val, index)} 
-                />
-              ))}
-            <SelectField 
-              id="destination"
-              label="Destination" 
-              placeholder={placeholderDestination} 
-              value = {destination}
-              options = {options}
-              onChange = {handleDestinationChange} 
+        {(groupSize === 1 ?
+          <SelectField
+            key={0}
+            id={'user'}
+            label={'Starting point'}
+            placeholder={placeholderOrigin[0]}
+            value={origin[0]}
+            options={options}
+            onChange={(val) => handleOriginChange(val, 0)}
+          />
+          : origin.map((singleOrigin, index) =>
+            <SelectField
+              key={index}
+              id={`starting-point-${index}`}
+              label={`Starting point ${index + 1}`}
+              placeholder={placeholderOrigin[index]}
+              value={singleOrigin}
+              options={options}
+              onChange={(val) => handleOriginChange(val, index)}
             />
-            <div>
-            <DateField 
-              id="departure-date"
-              label="Departure date" 
-              value = {departureDate}
-              onChange = {handleDepartureDateChange} 
-              departureDate={normalizeDate(departureDate)} 
-              today={normalizeDate(today)} 
-            />
-            </div>
-            <DateField 
-              id="return-date"
-              label="Return date" 
-              value = {returnDate}
-              onChange = {handleReturnDateChange} 
-              departureDate={normalizeDate(departureDate)}
-              returnDate={normalizeDate(returnDate)}
-            />
-            <NumberField 
-              label="Date margin (+/- days)"
-              value={dateMargin}
-              minValue = {0}
-              maxValue = {90}
-              canBeTyped={true}
-              setFunction={setDateMargin}
-            />
-            <div className="row">
-              <button type = "button" onClick={clearForm}>
-                Clear
-              </button> 
-              <button type = "submit" disabled={!canSearch}>
-                Search
-              </button>
-            </div>
-          </fieldset>
-      </form>
+          ))}
+        <SelectField
+          id="destination"
+          label="Destination"
+          placeholder={placeholderDestination}
+          value={destination}
+          options={options}
+          onChange={handleDestinationChange}
+        />
+        <div>
+          <DateField
+            id="departure-date"
+            label="Departure date"
+            value={departureDate}
+            onChange={handleDepartureDateChange}
+            departureDate={normalizeDate(departureDate)}
+            today={normalizeDate(today)}
+          />
+        </div>
+        <DateField
+          id="return-date"
+          label="Return date"
+          value={returnDate}
+          onChange={handleReturnDateChange}
+          departureDate={normalizeDate(departureDate)}
+          returnDate={normalizeDate(returnDate)}
+        />
+        <NumberField
+          label="Date margin (+/- days)"
+          value={dateMargin}
+          minValue={0}
+          maxValue={90}
+          canBeTyped={true}
+          setFunction={setDateMargin}
+        />
+        <div className="row">
+          <button type="button" onClick={clearForm}>
+            Clear
+          </button>
+          <button type="submit" disabled={!canSearch}>
+            Search
+          </button>
+        </div>
+      </fieldset>
+    </form>
   )
 }
