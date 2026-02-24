@@ -24,7 +24,11 @@ export const SearchFlights = async (query: SearchFlightQuery): Promise<CommonDes
             outboundDepartureDateEnd: apiFormattedEndDate,
             transportTypes: 'FLIGHT',
             currency: 'EUR',
-            limit: '5'
+            limit: '30',
+            //allowReturnFromDifferentCity: 'false',
+            //allowChangeInboundSource: 'false',
+            //allowChangeInboundDestination: 'false',
+            sortBy: 'PRICE'
         };
 
         if (query.inboundDateStart) {
@@ -63,29 +67,35 @@ export const SearchFlights = async (query: SearchFlightQuery): Promise<CommonDes
 
             // 3. Map the data to our Flight interface (including outbound and inbound)
             return flightsList.map((item: any) => {
-                const outboundSegment = item.outbound?.sectorSegments?.[0]?.segment;
-                const inboundSegment = item.inbound?.sectorSegments?.[0]?.segment;
+                const outboundSegments = item.outbound?.sectorSegments;
+                const inboundSegments = item.inbound?.sectorSegments;
 
                 // If either outbound or inbound is missing, skip this flight entirely
-                if (!outboundSegment || !inboundSegment) return null;
+                if (!outboundSegments || !outboundSegments.length || !inboundSegments || !inboundSegments.length) return null;
+
+                const outboundFirst = outboundSegments[0].segment;
+                const outboundLast = outboundSegments[outboundSegments.length - 1].segment;
+
+                const inboundFirst = inboundSegments[0].segment;
+                const inboundLast = inboundSegments[inboundSegments.length - 1].segment;
 
                 return {
                     id: item.id,
-                    origin: outboundSegment.source?.station?.code,
-                    destination: outboundSegment.destination?.station?.code,
+                    origin: outboundFirst.source?.station?.code,
+                    destination: outboundLast.destination?.station?.code,
                     price: parseFloat(item.price?.amount || '0'),
                     outboundDuration: Math.floor((item.outbound?.duration || 0) / 60),
                     inboundDuration: Math.floor((item.inbound?.duration || 0) / 60),
-                    airline: outboundSegment.carrier?.name || 'Unknown',
+                    airline: outboundFirst.carrier?.name || 'Unknown',
                     deep_link: `https://www.kiwi.com${item.bookingOptions?.edges?.[0]?.node?.bookingUrl || ''}`,
 
                     // OUTBOUND dates
-                    outboundDepartureTime: outboundSegment.source?.localTime,
-                    outboundArrivalTime: outboundSegment.destination?.localTime,
+                    outboundDepartureTime: outboundFirst.source?.localTime,
+                    outboundArrivalTime: outboundLast.destination?.localTime,
 
                     // INBOUND dates
-                    inboundDepartureTime: inboundSegment.source?.localTime,
-                    inboundArrivalTime: inboundSegment.destination?.localTime,
+                    inboundDepartureTime: inboundFirst.source?.localTime,
+                    inboundArrivalTime: inboundLast.destination?.localTime,
                 };
             }).filter((flight: any) => flight !== null) as Flight[];
 
