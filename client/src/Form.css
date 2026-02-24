@@ -1,0 +1,142 @@
+input, button, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+form{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+fieldset {
+  display: flex;
+  flex-direction: column;
+  width: 480px;
+  padding: 24px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  font-size: 13px;
+}
+
+h2 {
+  margin-top: 0;
+  text-align: center;
+  color: #333;
+}
+
+.FormField {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+label {
+  margin-bottom: 6px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+input {
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  height: 36px;
+  padding: 0 10px;
+}
+
+input:read-only{
+  outline: none; 
+  cursor: default; 
+  user-select: none;
+}
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input-number-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+button {
+  flex: 1;
+  max-width: 200px;
+  padding: 12px;
+  border-radius: 4px;
+  border: none;
+  background-color: #666;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+button[type="button"] {
+  background-color: #666;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: default;
+}
+
+.input-number-container>button{
+  font-size: 18px;
+  padding: 6px;
+}
+
+.my-react-select__control {
+  min-height: 36px !important;
+  height: 36px !important;
+  border-radius: 4px !important;
+  border: 1px solid #ccc !important;
+  align-items: center !important;
+}
+
+.my-react-select__value-container {
+  height: 36px;
+  padding: 0 6px !important;
+  display: flex !important;
+  align-items: center !important;
+  
+}
+
+.my-react-select__indicators {
+  height: 34px !important;
+}
+
+.my-react-select__indicator {
+  padding: 4px !important;
+}
+
+.my-react-select__input-container {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  position: absolute;
+  bottom: -27px;
+}
