@@ -13,7 +13,7 @@ const options = cities.map(city => ({ value: city, label: city }))
 
 const adjustDateByDays = (dateString, days) => {
   if (!dateString) return undefined;
-  const date = newDate(dateString);
+  const date = new Date(dateString);
   date.setDate(date.getDate() + days);
   return date.toISOString().split('T')[0];
 }
@@ -89,7 +89,7 @@ export const Form = () => {
     const margin = parseInt(dateMargin, 10) || 0;
 
     const payload = {
-      from: origin.join(','),               // Array: ["Berlin", "Paris"]
+      from: origin.join(','),               // String: "Berlin,Paris"]
       to: destination,     // String: "New York"
       outboundDateStart: adjustDateByDays(departureDate, -margin), // String: "2024-12-01"
       outboundDateEnd: adjustDateByDays(departureDate, margin),
