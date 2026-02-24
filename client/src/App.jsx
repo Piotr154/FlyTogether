@@ -14,8 +14,6 @@ function App() {
 
   const handleSearchRequest = async (formData) => {
     setIsSearching(true);
-    setResults(null);
-    // Simulate API call delay
     setTimeout(() => {
       setResults(MOCK_FLIGHTS);
       setIsSearching(false);
