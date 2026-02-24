@@ -32,7 +32,7 @@ const normalizeDate = (dateInput) => {
   return copy;
 }
 
-export const Form = () => {
+export const Form = ({ onSubmitData, isSearching }) => {
   const [groupSize, setGroupSize] = useState(1);
   const [origin, setOrigin] = useState(new Array(groupSize).fill(""));
   const [destination, setDestination] = useState("");
@@ -85,7 +85,7 @@ export const Form = () => {
     setReturnDate("");
     setDateMargin(0);
   }
-  const handleSubmit = async (e) => {
+  /*const handleSubmit = async (e) => {
     e.preventDefault();
     const margin = parseInt(dateMargin, 10) || 0;
 
@@ -122,6 +122,22 @@ export const Form = () => {
       console.error("Error occurred:", error);
       alert("Failed to retrieve flights. Please try again later.");
     }
+  }
+  */
+ const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const payload = {
+      origin: origin,
+      destination: destination,
+      departureDate: departureDate,
+      returnDate: returnDate,
+      dateMargin: dateMargin
+    };
+
+    onSubmitData(payload); 
+
+    clearForm();
   }
   const canSearch = !(
     origin.some(city => city.length === 0) ||
@@ -204,8 +220,8 @@ export const Form = () => {
           <button type="button" onClick={clearForm}>
             Clear
           </button>
-          <button type="submit" disabled={!canSearch}>
-            Search
+          <button type="submit" disabled={!canSearch||isSearching}>
+            {isSearching ? 'Searching...' : 'Search'}
           </button>
         </div>
       </fieldset>
