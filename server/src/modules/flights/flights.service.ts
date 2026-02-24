@@ -24,7 +24,7 @@ export const SearchFlights = async (query: SearchFlightQuery): Promise<CommonDes
             outboundDepartureDateEnd: apiFormattedEndDate,
             transportTypes: 'FLIGHT',
             currency: 'EUR',
-            limit: '30',
+            limit: '5',
             //allowReturnFromDifferentCity: 'false',
             //allowChangeInboundSource: 'false',
             //allowChangeInboundDestination: 'false',
@@ -82,7 +82,11 @@ export const SearchFlights = async (query: SearchFlightQuery): Promise<CommonDes
                 return {
                     id: item.id,
                     origin: outboundFirst.source?.station?.code,
+                    originCity: outboundFirst.source?.station?.city?.name,
+                    requestedOrigin: cityCode.trim(),
                     destination: outboundLast.destination?.station?.code,
+                    destinationCity: outboundLast.destination?.station?.city?.name,
+                    destinationCityCode: outboundLast.destination?.station?.city?.legacyId,
                     price: parseFloat(item.price?.amount || '0'),
                     outboundDuration: Math.floor((item.outbound?.duration || 0) / 60),
                     inboundDuration: Math.floor((item.inbound?.duration || 0) / 60),
@@ -113,23 +117,35 @@ export const SearchFlights = async (query: SearchFlightQuery): Promise<CommonDes
 
     const destinationMap = new Map<string, Flight[]>();
     for (const flight of allFlights) {
-        if (!destinationMap.has(flight.destination)) {
-            destinationMap.set(flight.destination, []);
+        // We group by City Code (e.g. 'london_gb') or fallback to destination if City Code is missing
+        const groupKey = flight.destinationCityCode || flight.destination;
+
+        if (!destinationMap.has(groupKey)) {
+            destinationMap.set(groupKey, []);
         }
 
-        destinationMap.get(flight.destination)!.push(flight);
+        destinationMap.get(groupKey)!.push(flight);
     }
     const commonDestinations: CommonDestination[] = [];
 
-    for (const [destCode, flightsToThisDest] of destinationMap.entries()) {
+    for (const [groupKey, flightsToThisDest] of destinationMap.entries()) {
         let everyoneCanFlyHere = true;
         let totalCost = 0;
         const selectedFlights: Flight[] = [];
 
+        // To set a friendly name like "London" instead of "london_gb"
+        let displayDestinationCity = groupKey;
+        if (flightsToThisDest.length > 0) {
+            displayDestinationCity = flightsToThisDest[0].destinationCity || flightsToThisDest[0].destination;
+        }
+
         for (const originCity of origins) {
             const trimmedOrigin = originCity.trim();
 
-            const flightsFromThisOrigin = flightsToThisDest.filter(f => f.origin === trimmedOrigin);
+            const flightsFromThisOrigin = flightsToThisDest.filter(f =>
+                f.requestedOrigin === trimmedOrigin
+            );
+
 
             if (flightsFromThisOrigin.length === 0) {
                 everyoneCanFlyHere = false;
@@ -144,7 +160,7 @@ export const SearchFlights = async (query: SearchFlightQuery): Promise<CommonDes
 
         if (everyoneCanFlyHere) {
             commonDestinations.push({
-                destination: destCode,
+                destination: displayDestinationCity, // Friendly name e.g., "London" or "Rome"
                 totalPrice: totalCost,
                 flights: selectedFlights
             });

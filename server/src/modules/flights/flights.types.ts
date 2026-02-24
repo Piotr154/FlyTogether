@@ -2,7 +2,11 @@ export interface Flight {
     id: string;
 
     origin: string;
+    originCity?: string;
+    requestedOrigin?: string;
     destination: string;
+    destinationCity?: string;
+    destinationCityCode?: string;
 
     outboundDepartureTime: string; // departure and arrival time in UTC not local time 
     outboundArrivalTime: string;
