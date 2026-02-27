@@ -1,0 +1,12 @@
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #f2f4ff;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}

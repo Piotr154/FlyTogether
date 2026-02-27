@@ -1,0 +1,154 @@
+/* Form contener*/
+.search-form {
+  width: 75%;
+  max-width: 700px;
+  margin: 50px auto;
+}
+
+/* Fieldset*/
+.search-form__fieldset {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 32px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+/* Section labels */
+.search-form__label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 4px;
+  display: block;
+}
+
+/* Group size buttons */
+.search-form .group-size-button {
+  width: 50px;
+  height: 25px;
+  border-radius: 8px;
+  opacity: 0.9;
+  transition: opacity 0.25s;
+}
+
+.search-form .group-size-button:hover {
+  opacity: 1;
+}
+
+/* Starting points */
+.search-form__header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.search-form__counter-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+/* Error messages */
+.error-message {
+  color: #fa5252;
+  font-size: 12px;
+  margin-top: 4px;
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+}
+
+/* React Select */
+.search-form .my-react-select__control {
+  min-height: 42px;
+  border-radius: 10px;
+  border-color: #ced4da;
+  box-shadow: none;
+  border: none;
+  background-color:#f0f0f0;
+  cursor: text;
+}
+
+.search-form .my-react-select__control:hover {
+  border-color:#999999;
+}
+
+.search-form .my-react-select__control--is-focused {
+  border-color: #999999;
+  box-shadow: 0 0 0 1px #999999;
+}
+
+.search-form .my-react-select__menu {
+  z-index: 10;
+}
+
+/* Styling date input */
+.date-field {
+  position: relative; /* For error message absolute */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-form .date-input {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.search-form .date-label{
+  color: #6b7280;
+}
+
+/* Searchbar */
+.search-form__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 4px;
+  padding-top: 16px;
+  border-top: 1px solid #eee;
+}
+
+.search-form__submit-button {
+  height: 48px;
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 20px;
+  font-weight: 500;
+  text-transform: capitalize;
+  cursor: pointer;
+  border: none;
+  opacity: 0.9;
+  transition: opacity 0.25s;
+  background: linear-gradient(90deg, #007bff, #00c6ff);
+  color: white;
+}
+
+.search-form__submit-button:hover {
+  opacity: 1;
+}
+.search-form__submit-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.search-layout{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.search-form__submit-icon  {
+  width: 20px;
+  height: 20px;
+  stroke-width: 1.5;
+}
+

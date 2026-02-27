@@ -1,5 +1,5 @@
 import { StartingPointCard } from './StartingPointCard'
-import '../SearchResult.css'
+import '../styles/SearchResult.css'
 
 export const SearchResult = ({ refResult, result }) => {
     if (result === null) {

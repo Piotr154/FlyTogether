@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
-import './App.css'
+import './styles/App.css'
 import { Form } from './form-components/Form'
 import { SearchResult } from './search-result-components/SearchResult';
 import { MOCK_FLIGHTS } from './mockData.js'
 import { scroller } from 'react-scroll';
+import { AppHeader } from './header-components/AppHeader.jsx';
 
 
 function App() {
@@ -31,10 +32,11 @@ function App() {
   }, [results]);
 
   return (
-  <>
+  <div className="App">
+    <AppHeader />
     <Form onSubmitData={handleSearchRequest} isSearching={isSearching} />
     <SearchResult refResult={resultsRef} result={results} />
-  </>
+  </div>
   );  
 }
 

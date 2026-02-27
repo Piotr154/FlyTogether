@@ -1,12 +1,10 @@
 import Select from 'react-select'
 
-export const SelectField = ({id, label, placeholder, value, options, onChange}) => {
-
+export const SelectField = ({id, placeholder, value, options, onChange}) => {
   const selectedValue = options.find(opt => opt.value === value) || null;
 
   return (
-    <div className="FormField SelectField">
-      <label htmlFor={id}>{label}</label>
+    <div className="form-field">
       <Select 
         id={id}
         classNamePrefix="my-react-select"
@@ -14,8 +12,8 @@ export const SelectField = ({id, label, placeholder, value, options, onChange}) 
         value={selectedValue}
         options={options}
         onChange={onChange}
-        isSearchable = {true}
-        isClearable = {true}
+        isSearchable={true}
+        isClearable={true}
       />
     </div>
   );
