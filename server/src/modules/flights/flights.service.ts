@@ -4,6 +4,10 @@ import { CommonDestination, Flight, SearchFlightQuery } from './flights.types';
 export const SearchFlights = async (query: SearchFlightQuery): Promise<CommonDestination[]> => {
     // 1. Convert the comma-separated string "WAW,BER" into an array ["WAW", "BER"]
     const origins = query.from.split(',');
+    const GOLDEN_HUBS = ['ROM','MIL','LON','BCN','PAR','BER','MAD','WAW','BUD','PRG','VCE','NAP','LIS','DUB','ATH','AGP','PMI','BGY','BVA','AMS', 'OPO'];
+    const shuffled = [...GOLDEN_HUBS].sort(() => Math.random() - 0.5);
+    const activeHubs = shuffled.slice(0, 10);
+    const isAnywhere = query.to.toLowerCase() === 'anywhere';
 
     console.log(`Searching for flights to ${query.to} from origins:`, origins);
 
@@ -15,19 +19,31 @@ export const SearchFlights = async (query: SearchFlightQuery): Promise<CommonDes
 
     const inboundStart = query.inboundDateStart as string;
 
+    const requestPairs: Array<{origin: string, destination: string}> = 
+        (isAnywhere && origins.length > 1)
+            // Multi-origin Anywhere: every origin × every hub
+            ? origins.flatMap(origin => 
+                activeHubs.map(hub => ({ origin: origin.trim(), destination: hub }))
+            )
+            // Normal search: one pair per origin
+            : origins.map(origin => ({ 
+                origin: origin.trim(), 
+                destination: query.to 
+            }));
+
     // 2. Create an array of Promises (each origin gets its own API request)
-    const flightRequests = origins.map(async (cityCode) => {
+    const flightRequests = requestPairs.map(async ({ origin, destination }) => {
         const kiwiParams: Record<string, any> = {
-            source: cityCode.trim(),
-            destination: query.to,
+            source: origin,
+            destination: destination,
             outboundDepartureDateStart: apiFormattedStartDate,
             outboundDepartureDateEnd: apiFormattedEndDate,
             transportTypes: 'FLIGHT',
             currency: 'EUR',
-            limit: '5',
-            //allowReturnFromDifferentCity: 'false',
-            //allowChangeInboundSource: 'false',
-            //allowChangeInboundDestination: 'false',
+            limit: isAnywhere ? '5' : '15',
+            allowReturnFromDifferentCity: 'false',
+            allowChangeInboundSource: 'false',
+            allowChangeInboundDestination: 'false',
             sortBy: 'PRICE'
         };
 
@@ -43,6 +59,10 @@ export const SearchFlights = async (query: SearchFlightQuery): Promise<CommonDes
 
         if (query.nightsInDestTo) {
             kiwiParams.nights_in_dst_to = query.nightsInDestTo;
+        }
+
+        if (query.maxStopovers !== undefined) {
+            kiwiParams.max_stopovers = query.maxStopovers;
         }
 
         const options = {
@@ -61,7 +81,7 @@ export const SearchFlights = async (query: SearchFlightQuery): Promise<CommonDes
             const flightsList = rootData.itineraries;
 
             if (!flightsList || !Array.isArray(flightsList)) {
-                console.log(`No valid itineraries found for origin: ${cityCode}`);
+                console.log(`No valid itineraries found for origin: ${origin}`);
                 return [];
             }
 
@@ -83,7 +103,7 @@ export const SearchFlights = async (query: SearchFlightQuery): Promise<CommonDes
                     id: item.id,
                     origin: outboundFirst.source?.station?.code,
                     originCity: outboundFirst.source?.station?.city?.name,
-                    requestedOrigin: cityCode.trim(),
+                    requestedOrigin: origin,
                     destination: outboundLast.destination?.station?.code,
                     destinationCity: outboundLast.destination?.station?.city?.name,
                     destinationCityCode: outboundLast.destination?.station?.city?.legacyId,
@@ -104,7 +124,7 @@ export const SearchFlights = async (query: SearchFlightQuery): Promise<CommonDes
             }).filter((flight: any) => flight !== null) as Flight[];
 
         } catch (error) {
-            console.error(`Error fetching flights from ${cityCode}:`, error);
+            console.error(`Error fetching flights from ${origin}:`, error);
             return []; // If one city fails, return an empty array so others can succeed
         }
     });

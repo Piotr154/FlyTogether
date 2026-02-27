@@ -4,7 +4,7 @@ import  { SearchFlightQuery } from './flights.types';
 
 export const getFlights = async (req: Request, res: Response) => {
     try {
-        const { from, to, outboundDateStart, outboundDateEnd, inboundDateStart, inboundDateEnd, nightsInDestFrom, nightsInDestTo } = req.query;
+        const { from, to, outboundDateStart, outboundDateEnd, inboundDateStart, inboundDateEnd, nightsInDestFrom, nightsInDestTo, maxStopovers } = req.query;
 
         if (!from) {
             res.status(400).json({
@@ -46,7 +46,8 @@ export const getFlights = async (req: Request, res: Response) => {
             inboundDateStart: inboundDateStart ? (inboundDateStart as string) : undefined,
             inboundDateEnd: inboundDateEnd ? (inboundDateEnd as string) : undefined,
             nightsInDestFrom: nightsInDestFrom ? parseInt(nightsInDestFrom as string, 10) : undefined,
-            nightsInDestTo: nightsInDestTo ? parseInt(nightsInDestTo as string, 10) : undefined 
+            nightsInDestTo: nightsInDestTo ? parseInt(nightsInDestTo as string, 10) : undefined,
+            maxStopovers: maxStopovers ? parseInt(maxStopovers as string, 10) : undefined
         };
 
         console.log("Controller: forwarding the query to the service:", query);

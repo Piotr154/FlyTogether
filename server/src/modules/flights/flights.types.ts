@@ -29,7 +29,8 @@ export interface SearchFlightQuery {
     inboundDateStart?: string | undefined; // the earliest date to return
     inboundDateEnd?: string | undefined; // the latest date to return
     nightsInDestFrom?: number | undefined; // minimum nights to stay on the place
-    nightsInDestTo?: number | undefined; // maximum nights to stay 
+    nightsInDestTo?: number | undefined; // maximum nights to stay
+    maxStopovers?: number | undefined; 
 }
 
 export interface CommonDestination {
