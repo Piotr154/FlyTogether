@@ -69,6 +69,9 @@
 .search-form .my-react-select__single-value{
   color: var(--app-text-primary);
 }
+.search-form .my-react-select__input-container{
+  color: var(--app-text-primary);
+}
 .search-form .my-react-select__control:hover {
   border-color: #999999;
 }

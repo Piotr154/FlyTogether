@@ -180,7 +180,6 @@ export const Form = ({ onSubmitData, isSearching }) => {
                     exit={{ opacity: 0, y: -20, height: 0 }}
                     transition={{ duration: 0.3 }}
                     layout
-                    style={{ overflow: 'hidden' }}
                   >
                     <SelectField
                       key={index}
@@ -242,14 +241,14 @@ export const Form = ({ onSubmitData, isSearching }) => {
                   border: "1px solid var(--app-border-color)",
                   backgroundColor: strictDate 
                     ? "var(--app-date-toggle-bg)" 
-                    : "rgb(0, 123, 255)",
+                    : "rgb(0, 160, 255)",
                   cursor: "pointer",
                   transition: "background-color 0.3s ease, border-color 0.3s ease"
                 },
                 thumb: {
                 backgroundColor: strictDate 
                   ? "var(--app-date-toggle-bg)"
-                  : "rgb(0, 123, 255)",
+                  : "rgb(0, 160, 255)",
                 border: "4px solid #fff",
                 transition: "background-color 0.3s ease, border-color 0.3s ease, left 150ms ease"
               },
