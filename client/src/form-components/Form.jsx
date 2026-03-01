@@ -182,7 +182,6 @@ export const Form = ({ onSubmitData, isSearching }) => {
                     layout
                   >
                     <SelectField
-                      key={index}
                       id={`starting-point-${index}`}
                       placeholder={placeholderOrigin[index]}
                       value={singleOrigin}
