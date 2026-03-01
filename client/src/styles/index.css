@@ -19,6 +19,7 @@
   --app-calendar-bg: white;
   --app-calendar-selected: rgba(0, 200, 255, 0.55); 
   --app-calendar-weekend-color: rgb(220, 0, 0);
+  --app-date-toggle-bg: #E9E9EA;
 }
 
 :root.dark-mode {
@@ -37,6 +38,7 @@
   --app-calendar-bg: #2f3036;
   --app-calendar-selected: rgba(0, 180, 255, 0.8);
   --app-calendar-weekend-color: rgb(255, 80, 80);
+  --app-date-toggle-bg: #373a40;
 }
 
 * {

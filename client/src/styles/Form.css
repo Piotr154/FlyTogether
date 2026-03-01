@@ -38,7 +38,8 @@
 }
 
 .search-form .group-size-button {
-  font-size: 20px;
+  padding-bottom: 2px;;
+  font-size: 26px;
   width: 50px;
   height: 25px;
   border-radius: 8px;
@@ -46,12 +47,13 @@
   transition: opacity 0.25s, background-color 0.3s ease-in-out;
 }
 
-.search-form .group-size-button:hover {
+.search-form .group-size-button:enabled:hover {
   opacity: 1;
 }
 
 .search-form .group-size-button:disabled {
   cursor: default;
+  background-color: var(--app-date-toggle-bg);
 }
 
 .search-form .my-react-select__control {
@@ -156,6 +158,19 @@
   height: 18px;
   stroke-width: 1.5;
   color: var(--app-text-placeholder);
+}
+
+.date-margin-field{
+  margin-top: 18px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.date-margin-info{
+  margin-top: auto;
+  font-size: 12px;
 }
 
 .error-message {

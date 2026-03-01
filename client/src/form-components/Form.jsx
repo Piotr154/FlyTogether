@@ -3,7 +3,8 @@ import { DateField } from './DateField'
 import { SelectField } from './SelectField'
 import { GroupSizeButton } from './GroupSizeButton'
 import { IconPlaneTilt } from '@tabler/icons-react';
-import { Loader } from '@mantine/core';
+import { Loader, Switch } from '@mantine/core';
+import { AnimatePresence, motion } from "motion/react";
 import '../styles/Form.css'
 
 const today = new Date();
@@ -39,7 +40,7 @@ export const Form = ({ onSubmitData, isSearching }) => {
   const [destination, setDestination] = useState("");
   const [departureDate, setDepartureDate] = useState(null);
   const [returnDate, setReturnDate] = useState(null);
-  const [dateMargin, setDateMargin] = useState(0);
+  const [strictDate, setStrictDate] = useState(true);
   const [placeholderOrigin, setPlaceholderOrigin] = useState(() => Array.from({ length: groupSize }, () => randomCity()));
   const [placeholderDestination, setPlaceholderDestination] = useState(randomCity());
 
@@ -77,13 +78,13 @@ export const Form = ({ onSubmitData, isSearching }) => {
     setDestination("");
     setDepartureDate(null);
     setReturnDate(null);
-    setDateMargin(0);
+    setStrictDate(true);
   }
 
   /*
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const margin = parseInt(dateMargin, 10) || 0;
+    const margin = (strictDate ? 0 : 3)
 
     const payload = {
       from: origin.join(','),               // String: "Berlin,Paris"]
@@ -128,7 +129,7 @@ export const Form = ({ onSubmitData, isSearching }) => {
       destination: destination,
       departureDate: departureDate,
       returnDate: returnDate,
-      dateMargin: dateMargin
+      strictDate: strictDate
     };
     onSubmitData(payload); 
     clearForm();
@@ -139,8 +140,7 @@ export const Form = ({ onSubmitData, isSearching }) => {
     destination.length === 0 ||
     departureDate === null ||
     returnDate === null ||
-    normalizeDate(departureDate) > normalizeDate(returnDate) ||
-    isNaN(dateMargin)
+    normalizeDate(departureDate) > normalizeDate(returnDate)
   );
 
   return (
@@ -170,27 +170,30 @@ export const Form = ({ onSubmitData, isSearching }) => {
           </div>
           
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-            {groupSize === 1 ? (
-              <SelectField
-                key={0}
-                id={'user'}
-                placeholder={placeholderOrigin[0]}
-                value={origin[0]}
-                options={options}
-                onChange={(val) => handleOriginChange(val, 0)}
-              />
-            ) : (
-              origin.map((singleOrigin, index) => (
-                <SelectField
-                  key={index}
-                  id={`starting-point-${index}`}
-                  placeholder={placeholderOrigin[index]}
-                  value={singleOrigin}
-                  options={options}
-                  onChange={(val) => handleOriginChange(val, index)}
-                />
-              ))
-            )}
+            <AnimatePresence mode="popLayout" initial={false}>
+              {
+                origin.map((singleOrigin, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: -20, height: 0 }}
+                    animate={{ opacity: 1, y: 0, height: "auto" }}
+                    exit={{ opacity: 0, y: -20, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                    layout
+                    style={{ overflow: 'hidden' }}
+                  >
+                    <SelectField
+                      key={index}
+                      id={`starting-point-${index}`}
+                      placeholder={placeholderOrigin[index]}
+                      value={singleOrigin}
+                      options={options}
+                      onChange={(val) => handleOriginChange(val, index)}
+                    />
+                  </motion.div>
+                ))
+              }
+            </AnimatePresence>
           </div>
         </div>
 
@@ -228,6 +231,32 @@ export const Form = ({ onSubmitData, isSearching }) => {
                 returnDate={normalizeDate(returnDate)}
                 today={normalizeDate(today)}
               />
+           </div>
+           <div className="date-margin-field">
+            <Switch
+              label="Dates are approximate"
+              className = "date-margin-switch"
+              withThumbIndicator ={false}
+              styles={{
+                track: {
+                  border: "1px solid var(--app-border-color)",
+                  backgroundColor: strictDate 
+                    ? "var(--app-date-toggle-bg)" 
+                    : "rgb(0, 123, 255)",
+                  cursor: "pointer",
+                  transition: "background-color 0.3s ease, border-color 0.3s ease"
+                },
+                thumb: {
+                backgroundColor: strictDate 
+                  ? "var(--app-date-toggle-bg)"
+                  : "rgb(0, 123, 255)",
+                border: "4px solid #fff",
+                transition: "background-color 0.3s ease, border-color 0.3s ease, left 150ms ease"
+              },
+              }}
+              onChange={() => setStrictDate(prev => !prev)}
+            />
+            {strictDate ? null : <span className ="date-margin-info">±3 days flexibility</span>}
            </div>
         </div>
 
