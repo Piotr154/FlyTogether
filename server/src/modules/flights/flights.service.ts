@@ -1,7 +1,32 @@
 import axios from 'axios';
 import { CommonDestination, Flight, SearchFlightQuery } from './flights.types';
+import redis from '../../redis';
+
+const buildCacheKey = (query: SearchFlightQuery): string => {
+    const sortedOrigins = query.from.split(',').sort().join(',');
+    return [
+        `flights`,
+        `from=${sortedOrigins}`,
+        `to=${query.to}`,
+        `out=${query.outboundDateStart ?? 'any'}_${query.outboundDateEnd ?? 'any'}`,
+        `in=${query.inboundDateStart ?? 'any'}_${query.inboundDateEnd ?? 'any'}`,
+        `nights=${query.nightsInDestFrom ?? 'any'}-${query.nightsInDestTo ?? 'any'}`,
+        `stops=${query.maxStopovers ?? 'any'}`
+    ].join(':');
+}
 
 export const SearchFlights = async (query: SearchFlightQuery): Promise<CommonDestination[]> => {
+    // checking if we have the request in our redis database
+    const cacheKey = buildCacheKey(query);
+    try {
+        const cached = await redis.get(cacheKey);
+        if (cached) {
+            console.log(`CACHE HIT: ${cacheKey}`);
+            return JSON.parse(cached);
+        }
+    } catch (err) {
+        console.error(`Redis get error, falling through to API: `, err);
+    }
     // 1. Convert the comma-separated string "WAW,BER" into an array ["WAW", "BER"]
     const origins = query.from.split(',');
     const GOLDEN_HUBS = ['ROM','MIL','LON','BCN','PAR','BER','MAD','WAW','BUD','PRG','VCE','NAP','LIS','DUB','ATH','AGP','PMI','BGY','BVA','AMS', 'OPO'];
@@ -188,6 +213,13 @@ export const SearchFlights = async (query: SearchFlightQuery): Promise<CommonDes
     }
     commonDestinations.sort((a, b) => a.totalPrice - b.totalPrice);
     console.log(`MATCHMAKER: Found ${commonDestinations.length} matching destinations!`);
+
+    try {
+        await redis.set(cacheKey, JSON.stringify(commonDestinations.slice(0, 15)), 'EX', 86400);
+        console.log(`CACHE SET: ${cacheKey} (24h TTL)`);
+    } catch (err) {
+        console.error('Redis set error:', err);
+    }
 
     // 7. Return the results (e.g., top 15 to avoid sending huge payloads)
     return commonDestinations.slice(0, 15);
