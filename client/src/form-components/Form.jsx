@@ -1,9 +1,10 @@
-import '../styles/Form.css'
 import { useEffect, useState } from 'react'
 import { DateField } from './DateField'
 import { SelectField } from './SelectField'
 import { GroupSizeButton } from './GroupSizeButton'
 import { IconPlaneTilt } from '@tabler/icons-react';
+import { Loader } from '@mantine/core';
+import '../styles/Form.css'
 
 const today = new Date();
 today.setHours(0, 0, 0, 0);
@@ -136,10 +137,9 @@ export const Form = ({ onSubmitData, isSearching }) => {
   const canSearch = !(
     origin.some(city => city.length === 0) ||
     destination.length === 0 ||
-    departureDate === "" ||
-    returnDate === "" ||
+    departureDate === null ||
+    returnDate === null ||
     normalizeDate(departureDate) > normalizeDate(returnDate) ||
-    normalizeDate(today) > normalizeDate(departureDate) ||
     isNaN(dateMargin)
   );
 
@@ -147,7 +147,7 @@ export const Form = ({ onSubmitData, isSearching }) => {
     <form className="search-form" onSubmit={handleSubmit}>
       <fieldset className="search-form__fieldset">
         
-        {/* Sekcja Starting Points */}
+        {/* Starting Points */}
         <div>
           <div className="search-form__header-row">
             <label className="search-form__label">Starting points</label>
@@ -194,7 +194,7 @@ export const Form = ({ onSubmitData, isSearching }) => {
           </div>
         </div>
 
-        {/* Sekcja Destination */}
+        {/* Destination */}
         <div>
           <label className="search-form__label">Destination</label>
           <SelectField
@@ -206,7 +206,7 @@ export const Form = ({ onSubmitData, isSearching }) => {
           />
         </div>
 
-        {/* Sekcja Travel Dates */}
+        {/* Travel Dates */}
         <div>
            <label className="search-form__label">Travel dates</label>
            <div style={{ display: 'flex', gap: '12px' }}>
@@ -216,6 +216,7 @@ export const Form = ({ onSubmitData, isSearching }) => {
                 value={departureDate}
                 onChange={setDepartureDate}
                 departureDate={normalizeDate(departureDate)}
+                returnDate={normalizeDate(returnDate)}
                 today={normalizeDate(today)}
               />
               <DateField
@@ -238,7 +239,8 @@ export const Form = ({ onSubmitData, isSearching }) => {
           >
             <div className="search-layout">
               <IconPlaneTilt className="search-form__submit-icon" />
-              {isSearching ? 'Searching...' : 'Search'}
+              Search
+              {isSearching ? <Loader className="search-form__submit-loader" size={16} color="white"/> : null}
             </div>
           </button>
         </div>

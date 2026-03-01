@@ -1,46 +1,30 @@
-/* Form contener*/
 .search-form {
   width: 75%;
-  max-width: 700px;
-  margin: 50px auto;
+  max-width: 900px;
+  margin: 50px auto 100px;
 }
 
-/* Fieldset*/
 .search-form__fieldset {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 24px;
   padding: 32px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--app-border-color);
   border-radius: 12px;
-  background-color: white;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  background-color: var(--app-bg-card);
+  box-shadow: 0 12px 32px var(--app-shadow-color);
+  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-/* Section labels */
 .search-form__label {
   font-size: 16px;
   font-weight: 600;
-  color: #555;
+  color: var(--app-text-primary);
   margin-bottom: 4px;
   display: block;
 }
 
-/* Group size buttons */
-.search-form .group-size-button {
-  width: 50px;
-  height: 25px;
-  border-radius: 8px;
-  opacity: 0.9;
-  transition: opacity 0.25s;
-}
-
-.search-form .group-size-button:hover {
-  opacity: 1;
-}
-
-/* Starting points */
 .search-form__header-row {
   display: flex;
   justify-content: space-between;
@@ -53,43 +37,67 @@
   gap: 8px;
 }
 
-/* Error messages */
-.error-message {
-  color: #fa5252;
-  font-size: 12px;
-  margin-top: 4px;
-  position: absolute;
-  bottom: -20px;
-  left: 0;
+.search-form .group-size-button {
+  font-size: 20px;
+  width: 50px;
+  height: 25px;
+  border-radius: 8px;
+  opacity: 0.85;
+  transition: opacity 0.25s, background-color 0.3s ease-in-out;
 }
 
-/* React Select */
+.search-form .group-size-button:hover {
+  opacity: 1;
+}
+
+.search-form .group-size-button:disabled {
+  cursor: default;
+}
+
 .search-form .my-react-select__control {
   min-height: 42px;
   border-radius: 10px;
-  border-color: #ced4da;
   box-shadow: none;
-  border: none;
-  background-color:#f0f0f0;
   cursor: text;
+  background-color: var(--app-input-bg); 
+  border: 1px solid var(--app-border-color);
+  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
 }
 
+.search-form .my-react-select__single-value{
+  color: var(--app-text-primary);
+}
 .search-form .my-react-select__control:hover {
-  border-color:#999999;
-}
-
-.search-form .my-react-select__control--is-focused {
   border-color: #999999;
-  box-shadow: 0 0 0 1px #999999;
 }
 
 .search-form .my-react-select__menu {
   z-index: 10;
+  background-color: var(--app-bg-card);
+  color: var(--app-text-primary);
+  transition: background-color 0.3s ease-in-out;
+  border: 0.5px solid var(--app-border-color);
+}
+.search-form .my-react-select__option {
+  background-color: transparent;
+}
+.search-form .my-react-select__option--is-focused{
+  background: var(--app-select-focused);
+  color: var(--app-text-primary);
+}
+.search-form .my-react-select__option:active {
+  background: var(--app-select-active);
+}
+.search-form .my-react-select__option--is-selected{
+  background: var(--app-select-selected);
+  color: var(--app-text-primary);
+}
+.search-form .my-react-select__placeholder{
+  color: var(--app-text-placeholder);
 }
 
-/* Styling date input */
 .date-field {
-  position: relative; /* For error message absolute */
+  position: relative;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -98,20 +106,76 @@
 .search-form .date-input {
   width: 100%;
   border-radius: 10px;
+  z-index: 1;
+  background-color: var(--app-input-bg);
+  border: 1px solid var(--app-border-color);
+  color: var(--app-text-primary);
+  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
 }
 
-.search-form .date-label{
-  color: #6b7280;
+.search-form .date-input:hover {
+  background-color: var(--app-input-bg-hover);
 }
 
-/* Searchbar */
+.search-form .date-label {
+  color: var(--app-text-secondary);
+}
+
+.search-form .date-placeholder {
+  padding-left: 24px;
+  color: var(--app-text-placeholder);
+}
+
+.date-dropdown {
+  background-color: var(--app-calendar-bg);
+  border: 1px solid var(--app-border-color);
+}
+.date-dropdown button[data-disabled] {
+  cursor: default;
+}
+.date-dropdown button:not([data-disabled]) {
+  color: var(--app-text-primary);
+}
+.date-dropdown button[data-weekend] {
+  color: var(--app-calendar-weekend-color);
+}
+.date-dropdown button:not([data-disabled]):not([data-selected]):hover {
+  background-color: var(--app-calendar-hover);
+}
+.date-dropdown button[data-selected] {
+  background-color: var(--app-calendar-selected);
+  color: var(--app-text-primary);
+}
+
+.date-icon {
+  position: absolute;
+  top: 33px;
+  left: 14px;
+  z-index: 2;
+  width: 18px;
+  height: 18px;
+  stroke-width: 1.5;
+  color: var(--app-text-placeholder);
+}
+
+.error-message {
+  color: #fa5252;
+  opacity: 0.8;
+  font-size: 12px;
+  margin-top: 4px;
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+}
+
 .search-form__actions {
   display: flex;
   justify-content: flex-end;
   gap: 12px;
   margin-top: 4px;
   padding-top: 16px;
-  border-top: 1px solid #eee;
+  border-top: 1px solid var(--app-border-color);
+  transition: border-color 0.3s ease-in-out;
 }
 
 .search-form__submit-button {
@@ -124,21 +188,25 @@
   text-transform: capitalize;
   cursor: pointer;
   border: none;
-  opacity: 0.9;
-  transition: opacity 0.25s;
-  background: linear-gradient(90deg, #007bff, #00c6ff);
+  opacity: 0.85;
+  transition: opacity 0.3s, transform 0.2s;
+  background: var(--app-accent-gradient);
   color: white;
+  transform: translateZ(0);
+  -webkit-font-smoothing: antialiased;
+  backface-visibility: hidden;
 }
 
 .search-form__submit-button:hover {
   opacity: 1;
 }
+
 .search-form__submit-button:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
+  opacity: 0.35;
+  cursor: default;
 }
 
-.search-layout{
+.search-layout {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -146,9 +214,12 @@
   gap: 4px;
 }
 
-.search-form__submit-icon  {
+.search-form__submit-icon {
   width: 20px;
   height: 20px;
   stroke-width: 1.5;
 }
 
+.search-form__submit-loader {
+  margin-left: 5px;
+}

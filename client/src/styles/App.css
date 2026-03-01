@@ -4,7 +4,8 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background-color: #f2f4ff;
+  background-color: var(--app-bg-body);
+  transition: background-color 0.3s ease-in-out;
 }
 
 *, *::before, *::after {

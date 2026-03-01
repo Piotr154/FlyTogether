@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
-import './styles/App.css'
-import { Form } from './form-components/Form'
+import './styles/App.css';
+import { Form } from './form-components/Form';
 import { SearchResult } from './search-result-components/SearchResult';
-import { MOCK_FLIGHTS } from './mockData.js'
+import { MOCK_FLIGHTS } from './mockData.js';
 import { scroller } from 'react-scroll';
 import { AppHeader } from './header-components/AppHeader.jsx';
 
@@ -18,7 +18,7 @@ function App() {
     setTimeout(() => {
       setResults(MOCK_FLIGHTS);
       setIsSearching(false);
-    }, 2000);
+    }, 3000);
   }
 
   useEffect(() => {
@@ -26,7 +26,8 @@ function App() {
       scroller.scrollTo(resultsRef.current.id, {
         duration: 800,
         delay: 100,
-        smooth: 'easeInOutQuart'
+        smooth: 'easeInOutQuart',
+        ignoreCancelEvents: true
       });
     }
   }, [results]);
