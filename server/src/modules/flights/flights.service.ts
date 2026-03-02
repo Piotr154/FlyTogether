@@ -29,7 +29,7 @@ export const SearchFlights = async (query: SearchFlightQuery): Promise<CommonDes
     }
     // 1. Convert the comma-separated string "WAW,BER" into an array ["WAW", "BER"]
     const origins = query.from.split(',');
-    const GOLDEN_HUBS = ['ROM','MIL','LON','BCN','PAR','BER','MAD','WAW','BUD','PRG','VCE','NAP','LIS','DUB','ATH','AGP','PMI','BGY','BVA','AMS', 'OPO'];
+    const GOLDEN_HUBS = ['ROM', 'MIL', 'LON', 'BCN', 'PAR', 'BER', 'MAD', 'WAW', 'BUD', 'PRG', 'VCE', 'NAP', 'LIS', 'DUB', 'ATH', 'AGP', 'PMI', 'BGY', 'BVA', 'AMS', 'OPO'];
     const shuffled = [...GOLDEN_HUBS].sort(() => Math.random() - 0.5);
     const activeHubs = shuffled.slice(0, 10);
     const isAnywhere = query.to.toLowerCase() === 'anywhere';
@@ -44,16 +44,16 @@ export const SearchFlights = async (query: SearchFlightQuery): Promise<CommonDes
 
     const inboundStart = query.inboundDateStart as string;
 
-    const requestPairs: Array<{origin: string, destination: string}> = 
+    const requestPairs: Array<{ origin: string, destination: string }> =
         (isAnywhere && origins.length > 1)
             // Multi-origin Anywhere: every origin × every hub
-            ? origins.flatMap(origin => 
+            ? origins.flatMap(origin =>
                 activeHubs.map(hub => ({ origin: origin.trim(), destination: hub }))
             )
             // Normal search: one pair per origin
-            : origins.map(origin => ({ 
-                origin: origin.trim(), 
-                destination: query.to 
+            : origins.map(origin => ({
+                origin: origin.trim(),
+                destination: query.to
             }));
 
     // 2. Create an array of Promises (each origin gets its own API request)
