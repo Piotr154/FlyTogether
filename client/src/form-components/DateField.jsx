@@ -1,4 +1,3 @@
-import { DateErrorMessage } from './DateErrorMessage'
 import { DatePickerInput } from '@mantine/dates';
 import { IconCalendar } from '@tabler/icons-react';
 
@@ -21,13 +20,9 @@ export const DateField = ({id, label, value, onChange, today, departureDate, ret
         label={label}
         placeholder="Pick a date"
         value={value} 
-        minDate = {today}
+        minDate = {(departureDate&&label==="Return")? departureDate : today}
         onChange={onChange} 
         style={{ width: '100%' }}
-      />
-      <DateErrorMessage 
-        departureDate={departureDate} 
-        returnDate={returnDate} 
       />
     </div>
   );

@@ -5,6 +5,7 @@ import { GroupSizeButton } from './GroupSizeButton'
 import { IconPlaneTilt } from '@tabler/icons-react';
 import { Loader, Switch } from '@mantine/core';
 import { AnimatePresence, motion } from "motion/react";
+import { PriceRangeSlider } from './PriceRangeSlider';
 import '../styles/Form.css'
 
 const today = new Date();
@@ -41,6 +42,7 @@ export const Form = ({ onSubmitData, isSearching }) => {
   const [departureDate, setDepartureDate] = useState(null);
   const [returnDate, setReturnDate] = useState(null);
   const [strictDate, setStrictDate] = useState(true);
+  const [priceRange, setPriceRange] = useState(5000);
   const [placeholderOrigin, setPlaceholderOrigin] = useState(() => Array.from({ length: groupSize }, () => randomCity()));
   const [placeholderDestination, setPlaceholderDestination] = useState(randomCity());
 
@@ -139,8 +141,7 @@ export const Form = ({ onSubmitData, isSearching }) => {
     origin.some(city => city.length === 0) ||
     destination.length === 0 ||
     departureDate === null ||
-    returnDate === null ||
-    normalizeDate(departureDate) > normalizeDate(returnDate)
+    returnDate === null
   );
 
   return (
@@ -210,7 +211,7 @@ export const Form = ({ onSubmitData, isSearching }) => {
         {/* Travel Dates */}
         <div>
            <label className="search-form__label">Travel dates</label>
-           <div style={{ display: 'flex', gap: '12px' }}>
+           <div className="search-form__dates-area">
               <DateField
                 id="departure-date"
                 label="Departure"
@@ -256,6 +257,13 @@ export const Form = ({ onSubmitData, isSearching }) => {
             />
             {strictDate ? null : <span className ="date-margin-info">±3 days flexibility</span>}
            </div>
+        </div>
+        <div className="search-form__price-range-area">
+          <label className="search-form__label">Price range</label>
+          <PriceRangeSlider 
+            value={priceRange}
+            setFunction={setPriceRange}
+          />
         </div>
 
         <div className="search-form__actions">

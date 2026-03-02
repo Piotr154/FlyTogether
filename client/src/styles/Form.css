@@ -101,6 +101,12 @@
   color: var(--app-text-placeholder);
 }
 
+.search-form__dates-area{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
 .date-field {
   position: relative;
   width: 100%;
@@ -184,6 +190,13 @@
   position: absolute;
   bottom: -20px;
   left: 0;
+}
+
+.search-form__price-range-area{
+  margin: 15px 0 30px; 
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .search-form__actions {

@@ -17,7 +17,7 @@
   --mantine-color-body: var(--app-bg-body);
   --app-calendar-hover: #f7f7f7;
   --app-calendar-bg: white;
-  --app-calendar-selected: rgba(0, 200, 255, 0.55); 
+  --app-calendar-selected: rgba(0, 200, 255, 0.35); 
   --app-calendar-weekend-color: rgb(220, 0, 0);
   --app-date-toggle-bg: #E9E9EA;
 }
