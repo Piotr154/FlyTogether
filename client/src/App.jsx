@@ -36,7 +36,7 @@ function App() {
   <div className="App">
     <AppHeader />
     <Form onSubmitData={handleSearchRequest} isSearching={isSearching} />
-    <SearchResult refResult={resultsRef} result={results} />
+    <SearchResult refResult={resultsRef} result={results} isSearching={isSearching} />
   </div>
   );  
 }
