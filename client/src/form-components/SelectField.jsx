@@ -1,4 +1,5 @@
-import Select from 'react-select'
+import Select from 'react-select';
+import '../styles/SelectField.css';
 
 export const SelectField = ({id, placeholder, value, options, onChange}) => {
   const selectedValue = options.find(opt => opt.value === value) || null;

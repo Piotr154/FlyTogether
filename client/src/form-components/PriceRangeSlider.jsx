@@ -69,5 +69,5 @@ export const PriceRangeSlider = ({ value, setFunction }) => {
                 }}
             />
         </div>
-    )
+    );
 }

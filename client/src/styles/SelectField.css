@@ -1,0 +1,44 @@
+.search-form .my-react-select__control {
+  min-height: 42px;
+  border-radius: 10px;
+  box-shadow: none;
+  cursor: text;
+  background-color: var(--app-input-bg); 
+  border: 1px solid var(--app-border-color);
+  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+
+.search-form .my-react-select__single-value{
+  color: var(--app-text-primary);
+}
+.search-form .my-react-select__input-container{
+  color: var(--app-text-primary);
+}
+.search-form .my-react-select__control:hover {
+  border-color: #999999;
+}
+
+.search-form .my-react-select__menu {
+  z-index: 10;
+  background-color: var(--app-bg-card);
+  color: var(--app-text-primary);
+  transition: background-color 0.3s ease-in-out;
+  border: 0.5px solid var(--app-border-color);
+}
+.search-form .my-react-select__option {
+  background-color: transparent;
+}
+.search-form .my-react-select__option--is-focused{
+  background: var(--app-select-focused);
+  color: var(--app-text-primary);
+}
+.search-form .my-react-select__option:active {
+  background: var(--app-select-active);
+}
+.search-form .my-react-select__option--is-selected{
+  background: var(--app-select-selected);
+  color: var(--app-text-primary);
+}
+.search-form .my-react-select__placeholder{
+  color: var(--app-text-placeholder);
+}

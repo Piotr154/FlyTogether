@@ -1,6 +1,6 @@
 import { IconPlaneTilt, IconSun, IconMoonStars  } from '@tabler/icons-react';
 import { Switch } from '@mantine/core';
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '../context/ThemeContext.jsx';
 import '../styles/AppHeader.css';
 
 
@@ -33,5 +33,5 @@ export const AppHeader = () => {
                 </h2>
             </div>
         </div>
-    )
+    );
 }

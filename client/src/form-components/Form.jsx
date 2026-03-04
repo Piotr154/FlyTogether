@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react'
-import { DateField } from './DateField'
-import { SelectField } from './SelectField'
-import { GroupSizeButton } from './GroupSizeButton'
+import { useEffect, useState } from 'react';
+import { DateField } from './DateField.jsx';
+import { SelectField } from './SelectField.jsx';
+import { GroupSizeButton } from './GroupSizeButton.jsx';
 import { IconPlaneTilt } from '@tabler/icons-react';
 import { Loader, Switch } from '@mantine/core';
 import { AnimatePresence, motion } from "motion/react";
-import { PriceRangeSlider } from './PriceRangeSlider';
-import '../styles/Form.css'
+import { PriceRangeSlider } from './PriceRangeSlider.jsx';
+import '../styles/Form.css';
 
 const today = new Date();
 today.setHours(0, 0, 0, 0);
@@ -115,8 +115,6 @@ export const Form = ({ onSubmitData, isSearching }) => {
       console.log("Received flights:", data);
       alert(`Found ${data.data.length || 0} flight options.`);
 
-      clearForm();
-
     } catch (error) {
       console.error("Error occurred:", error);
       alert("Failed to retrieve flights. Please try again later.");
@@ -134,7 +132,6 @@ export const Form = ({ onSubmitData, isSearching }) => {
       strictDate: strictDate
     };
     onSubmitData(payload); 
-    clearForm();
   }
 
   const canSearch = !(
@@ -282,5 +279,5 @@ export const Form = ({ onSubmitData, isSearching }) => {
 
       </fieldset>
     </form>
-  )
+  );
 }

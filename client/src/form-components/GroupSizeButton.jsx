@@ -1,4 +1,5 @@
 import { ActionIcon } from '@mantine/core';
+import '../styles/GroupSizeButton.css';
 
 const increment = (prev, maxValue) => {
   if (isNaN(prev))

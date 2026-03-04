@@ -37,136 +37,10 @@
   gap: 8px;
 }
 
-.search-form .group-size-button {
-  padding-bottom: 2px;;
-  font-size: 26px;
-  width: 50px;
-  height: 25px;
-  border-radius: 8px;
-  opacity: 0.85;
-  transition: opacity 0.25s, background-color 0.3s ease-in-out;
-}
-
-.search-form .group-size-button:enabled:hover {
-  opacity: 1;
-}
-
-.search-form .group-size-button:disabled {
-  cursor: default;
-  background-color: var(--app-date-toggle-bg);
-}
-
-.search-form .my-react-select__control {
-  min-height: 42px;
-  border-radius: 10px;
-  box-shadow: none;
-  cursor: text;
-  background-color: var(--app-input-bg); 
-  border: 1px solid var(--app-border-color);
-  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
-}
-
-.search-form .my-react-select__single-value{
-  color: var(--app-text-primary);
-}
-.search-form .my-react-select__input-container{
-  color: var(--app-text-primary);
-}
-.search-form .my-react-select__control:hover {
-  border-color: #999999;
-}
-
-.search-form .my-react-select__menu {
-  z-index: 10;
-  background-color: var(--app-bg-card);
-  color: var(--app-text-primary);
-  transition: background-color 0.3s ease-in-out;
-  border: 0.5px solid var(--app-border-color);
-}
-.search-form .my-react-select__option {
-  background-color: transparent;
-}
-.search-form .my-react-select__option--is-focused{
-  background: var(--app-select-focused);
-  color: var(--app-text-primary);
-}
-.search-form .my-react-select__option:active {
-  background: var(--app-select-active);
-}
-.search-form .my-react-select__option--is-selected{
-  background: var(--app-select-selected);
-  color: var(--app-text-primary);
-}
-.search-form .my-react-select__placeholder{
-  color: var(--app-text-placeholder);
-}
-
 .search-form__dates-area{
   display: flex;
   flex-direction: row;
   gap: 20px;
-}
-
-.date-field {
-  position: relative;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.search-form .date-input {
-  width: 100%;
-  border-radius: 10px;
-  z-index: 1;
-  background-color: var(--app-input-bg);
-  border: 1px solid var(--app-border-color);
-  color: var(--app-text-primary);
-  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
-}
-
-.search-form .date-input:hover {
-  background-color: var(--app-input-bg-hover);
-}
-
-.search-form .date-label {
-  color: var(--app-text-secondary);
-}
-
-.search-form .date-placeholder {
-  padding-left: 24px;
-  color: var(--app-text-placeholder);
-}
-
-.date-dropdown {
-  background-color: var(--app-calendar-bg);
-  border: 1px solid var(--app-border-color);
-}
-.date-dropdown button[data-disabled] {
-  cursor: default;
-}
-.date-dropdown button:not([data-disabled]) {
-  color: var(--app-text-primary);
-}
-.date-dropdown button[data-weekend] {
-  color: var(--app-calendar-weekend-color);
-}
-.date-dropdown button:not([data-disabled]):not([data-selected]):hover {
-  background-color: var(--app-calendar-hover);
-}
-.date-dropdown button[data-selected] {
-  background-color: var(--app-calendar-selected);
-  color: var(--app-text-primary);
-}
-
-.date-icon {
-  position: absolute;
-  top: 33px;
-  left: 14px;
-  z-index: 2;
-  width: 18px;
-  height: 18px;
-  stroke-width: 1.5;
-  color: var(--app-text-placeholder);
 }
 
 .date-margin-field{
@@ -180,16 +54,6 @@
 .date-margin-info{
   margin-top: auto;
   font-size: 12px;
-}
-
-.error-message {
-  color: #fa5252;
-  opacity: 0.8;
-  font-size: 12px;
-  margin-top: 4px;
-  position: absolute;
-  bottom: -20px;
-  left: 0;
 }
 
 .search-form__price-range-area{

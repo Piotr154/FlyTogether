@@ -1,5 +1,6 @@
 import { DatePickerInput } from '@mantine/dates';
 import { IconCalendar } from '@tabler/icons-react';
+import '../styles/DateField.css';
 
 
 export const DateField = ({id, label, value, onChange, today, departureDate, returnDate}) => {

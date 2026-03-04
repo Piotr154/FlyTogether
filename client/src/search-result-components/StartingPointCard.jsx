@@ -1,4 +1,4 @@
-import { FlightCard } from "./FlightCard";
+import { FlightCard } from "./FlightCard.jsx";
 
 export const StartingPointCard = ({ startingPoint, flights }) => {
     return (
