@@ -30,8 +30,14 @@ export const ResultsHeader = ({destination, StartingPointsCount, showingDepartur
             <SummaryCard title="Fastest" value="3h 57m"/>
             <SummaryCard title="Total Results" value="6 options"/>
             <div className="results-filters">
-                <ResultsFilter/>
-                <ResultsFilter/>
+                <ResultsFilter
+                    label = "Filter"
+                    data = {["a", "b", "c"]}
+                />
+                <ResultsFilter
+                    label = "Sort by"
+                    data = {["Best Price", "Shortest Duration"]}
+                />
             </div>
         </div>
         </>

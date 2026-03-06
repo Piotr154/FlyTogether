@@ -66,4 +66,11 @@
     flex-direction: row;
     gap: 12px;
     margin-bottom: 50px;
+    height: 140px;
+}
+
+.results-filters{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
