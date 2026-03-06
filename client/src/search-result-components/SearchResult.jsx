@@ -1,8 +1,11 @@
 import { StartingPointCard } from './StartingPointCard.jsx'
 import { ResultsHeader } from './ResultsHeader.jsx';
+import { useState } from 'react';
 import '../styles/SearchResult.css';
 
 export const SearchResult = ({ refResult, result, destination, StartingPointsCount}) => {
+    const [showingDepartures, setshowingDepartures] = useState(true);
+
     if (result === null) {
         return null;
     }
@@ -11,7 +14,12 @@ export const SearchResult = ({ refResult, result, destination, StartingPointsCou
     
     return (
         <div id="results-container" className="results-container" ref={refResult}>
-            <ResultsHeader destination={destination} StartingPointsCount={StartingPointsCount}/>
+            <ResultsHeader 
+                destination={destination} 
+                StartingPointsCount={StartingPointsCount} 
+                showingDepartures={showingDepartures} 
+                setshowingDepartures={setshowingDepartures}
+            />
             {uniqueOrigins.map((origin, index) => (
                 <StartingPointCard 
                     key={index}

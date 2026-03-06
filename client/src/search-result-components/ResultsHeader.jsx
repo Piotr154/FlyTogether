@@ -1,9 +1,8 @@
-import { Button } from '@mantine/core';
 import { SummaryCard } from './SummaryCard.jsx';
 import { ResultsFilter } from './ResultsFilter.jsx';
 import '../styles/ResultsHeader.css';
 
-export const ResultsHeader = ({destination, StartingPointsCount}) => {
+export const ResultsHeader = ({destination, StartingPointsCount, showingDepartures, setshowingDepartures}) => {
     return (
         <>
         <div className="results-header">
@@ -12,12 +11,18 @@ export const ResultsHeader = ({destination, StartingPointsCount}) => {
                 <span className="results-header-sub-text">Showing results from {StartingPointsCount} cities</span>
             </div>
             <div className="results-header-buttons-box">
-                <Button className="results-button-departure">
+                <button 
+                    onClick = {()=>setshowingDepartures(true)}
+                    className = {showingDepartures? "results-button-departure-active" : "results-button-departure"}
+                >
                     Departure
-                </Button>
-                <Button className="results-button-return">
+                </button>
+                <button 
+                    onClick = {()=>setshowingDepartures(false)}
+                    className = {showingDepartures? "results-button-return" : "results-button-return-active"}
+                >
                     Return
-                </Button>
+                </button>
             </div>
         </div>
         <div className="results-summary">
