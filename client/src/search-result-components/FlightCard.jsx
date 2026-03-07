@@ -1,13 +1,29 @@
-export const FlightCard = ({flight}) => {
+export const FlightCard = ({ flight }) => {
+    const dateOptions = { 
+        weekday: 'short',
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric'
+    };
+    const timeOptions = {
+        hour: '2-digit',
+        minute: '2-digit'
+    }
+    const { origin, destination, airline, departureTime, arrivalTime, duration, price, deep_link } = flight;
+    const departureDate = new Date(departureTime).toLocaleDateString('en-US', dateOptions);
+    const departureExactTime = new Date(departureTime).toLocaleTimeString([],timeOptions);
+    const arrivalDate = new Date(arrivalTime).toLocaleDateString('en-US', dateOptions);
+    const arrivalExactTime = new Date(arrivalTime).toLocaleTimeString([],timeOptions);
+    const durationHoursMinutes = Math.floor(duration / 60)+ "h " + (duration%60 != 0? duration % 60 + "m" : "");
     return (
         <div className="flight-card">
-            <h4>{flight.airline}</h4>
-            <p>{flight.origin} → {flight.destination}</p>
-            <p>Departure: {new Date(flight.departureTime).toLocaleString()}</p>
-            <p>Arrival: {new Date(flight.arrivalTime).toLocaleString()}</p>
-            <p>Duration: {Math.floor(flight.duration / 60)}h {flight.duration % 60}m</p>
-            <p>Price: ${flight.price}</p>
-            <a href={flight.deep_link} target="_blank" rel="noopener noreferrer">Book Now</a>
+            <div className="flight-details">
+                <div className="date-and-airline">
+                </div>
+                <div className="flight-timeline">
+                </div>
+            </div>
+            <div className="flight-price"></div>
         </div>
-    )
-}
+    );
+};

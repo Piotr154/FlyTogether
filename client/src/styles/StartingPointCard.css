@@ -1,0 +1,21 @@
+.starting-point-card{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.starting-point-card-header{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.starting-point-card-header h4{
+    font-size: 12px;
+    padding: 5px;
+    border-radius: 8px;
+    border: 1px solid var(--app-border-color);
+}

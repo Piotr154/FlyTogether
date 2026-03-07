@@ -25,6 +25,7 @@ export const SearchResult = ({ refResult, result, destination, StartingPointsCou
                     key={index}
                     startingPoint={origin} 
                     flights={result.filter(flight => flight.origin === origin)} 
+                    showingDepartures = {showingDepartures}
                 />
             ))}
         </div>
