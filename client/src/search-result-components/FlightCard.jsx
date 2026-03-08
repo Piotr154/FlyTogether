@@ -51,7 +51,10 @@ export const FlightCard = ({ flight }) => {
                     </div>
                 </div>
             </div>
-            <div className="flight-price"></div>
+            <div className="flight-price">
+                <h2>${price}</h2>
+                <a href={deep_link} target="_blank">Select</a>
+            </div>
         </div>
     );
 };
