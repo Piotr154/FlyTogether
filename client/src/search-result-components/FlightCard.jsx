@@ -1,3 +1,7 @@
+import { IconCalendarWeek, IconPlaneTilt, IconPlane} from '@tabler/icons-react';
+import { Divider } from '@mantine/core';
+import '../styles/FlightCard.css';
+
 export const FlightCard = ({ flight }) => {
     const dateOptions = { 
         weekday: 'short',
@@ -18,9 +22,33 @@ export const FlightCard = ({ flight }) => {
     return (
         <div className="flight-card">
             <div className="flight-details">
-                <div className="date-and-airline">
+                <div className="flight-date-and-airline">
+                    <div className="flight-date">
+                        <IconCalendarWeek/> 
+                        {departureDate}
+                    </div>
+                    <div className="flight-airline">
+                        <IconPlaneTilt/>
+                        {airline}
+                    </div>
                 </div>
                 <div className="flight-timeline">
+                    <div className="flight-departure-section">
+                        <p><h2>{departureExactTime}</h2></p>
+                        <p>{origin}</p>
+                    </div>
+                    <div className="flight-duration-section">
+                        <div className="flight-duration-bar">
+                            <Divider flex={1} color="gray.3" />
+                            <IconPlane/>
+                            <Divider flex={1} color="gray.3" />
+                        </div>
+                        <p>{durationHoursMinutes}</p>
+                    </div>
+                    <div className="flight-return-section">
+                        <p><h2>{arrivalExactTime}</h2></p>
+                        <p>{destination}</p>
+                    </div>
                 </div>
             </div>
             <div className="flight-price"></div>
