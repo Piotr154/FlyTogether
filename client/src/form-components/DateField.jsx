@@ -22,6 +22,7 @@ export const DateField = ({id, label, value, onChange, today, departureDate, ret
         placeholder="Pick a date"
         value={value} 
         minDate = {(departureDate&&label==="Return")? departureDate : today}
+        maxDate = {(returnDate&&label==="Departure")? returnDate : null}
         onChange={onChange} 
         style={{ width: '100%' }}
       />

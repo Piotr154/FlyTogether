@@ -66,11 +66,15 @@
     flex-direction: row;
     gap: 12px;
     margin-bottom: 50px;
-    height: 140px;
+    height: auto;
 }
 
 .results-filters{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    width: 35%;
+}
+.filter-option:hover, .sort-by-option:hover {
+    background-color: var(--app-input-bg-hover);
 }

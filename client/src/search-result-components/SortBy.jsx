@@ -1,15 +1,17 @@
 import { Select } from '@mantine/core';
-import '../styles/ResultsFilter.css';
 
-export const ResultsFilter = ({label, data}) => {
+export const SortBy = ({data, SortFlightsBy, setSortFlightsBy}) => {
     return(
         <Select 
-            className="ResultsFilter"
-            label={label}
+            className="sortBy"
+            label= "Sort By"
             placeholder="Pick value"
             data={data}
+            defaultValue={data[0]}
+            value={SortFlightsBy}
+            onChange={setSortFlightsBy}
             classNames={{
-                option: 'results-filter-option' 
+                option: 'sort-by-option' 
             }}
             styles  = {{
                         label:{
@@ -20,7 +22,7 @@ export const ResultsFilter = ({label, data}) => {
                             borderRadius: "8px",
                             border: "1px solid var(--app-border-color)",
                             backgroundColor: "var( --app-bg-card)",
-                            color: "var( --app-text-primary)"
+                            color: "var( --app-text-primary)",
                         },
                         dropdown: {
                             backgroundColor: "var( --app-bg-card)",

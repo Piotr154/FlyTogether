@@ -82,7 +82,7 @@
     border: none;
     border-radius: 12px;
     background-color: rgb(0, 160, 255);
-    color: var(--app-text-primary);
+    color: white;
     font-weight: bold;
     text-decoration: none;
     cursor: pointer;
