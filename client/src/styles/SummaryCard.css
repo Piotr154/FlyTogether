@@ -12,3 +12,10 @@
 .SummaryCard h3{
     font-size: 14px;
 }
+.summaryTitle{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 6px;
+}

@@ -11,9 +11,6 @@
   --app-input-bg-hover: #f0f0f0;
   --app-header-bg: #f8f9fa;
   --app-accent-gradient: linear-gradient(90deg, rgb(0, 123, 255), rgb(0, 198, 255));
-  --app-select-focused: rgba(0, 175, 255, 0.2);
-  --app-select-selected: rgba(0, 175, 255, 0.3);
-  --app-select-active: rgba(0, 175, 255, 0.4);
   --mantine-color-body: var(--app-bg-body);
   --app-calendar-hover: #f7f7f7;
   --app-calendar-bg: white;

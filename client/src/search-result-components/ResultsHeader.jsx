@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { SummaryCard } from './SummaryCard.jsx';
 import { Filter } from './Filter.jsx';
 import { SortBy } from './SortBy.jsx';
+import { IconTag, IconClockHour4, IconLayoutList } from '@tabler/icons-react';
 import '../styles/ResultsHeader.css';
 
 export const ResultsHeader = ({
@@ -27,7 +28,7 @@ export const ResultsHeader = ({
         const formatDuration = (minutes) => {
             const h = Math.floor(minutes / 60);
             const m = minutes % 60;
-            return `${h}h ${m > 0 ? m + "m" : ""}`;
+            return `${h}${m===0 ? " hours" : "h"} ${m > 0 ? m + "m" : ""}`;
         };
             
     return (
@@ -53,9 +54,24 @@ export const ResultsHeader = ({
             </div>
         </div>
         <div className="results-summary">
-            <SummaryCard title="Best Price" value={totalResults > 0 ? `$ ${bestPrice}` : "-"}/>
-            <SummaryCard title="Fastest" value={totalResults > 0 ? formatDuration(shortestDuration) : "-"}/>
-            <SummaryCard title="Total Results" value={totalResults>0 ? `${totalResults} ${totalResults===1? "option" : "options"}` : "-"}/>
+            <SummaryCard title={
+            <div className='summaryTitle'>
+                <IconTag stroke={2} /> 
+                <h3>Best Price</h3>
+            </div>
+            } value={totalResults > 0 ? `$ ${bestPrice}` : "-"}/>
+            <SummaryCard title={
+            <div className='summaryTitle'>
+                <IconClockHour4 stroke={2} /> 
+                <h3>Fastest</h3>
+            </div>
+            } value={totalResults > 0 ? formatDuration(shortestDuration) : "-"}/>
+            <SummaryCard title={
+            <div className='summaryTitle'>
+                <IconLayoutList stroke={2} /> 
+                <h3>Total Results</h3>
+            </div>
+            }  value={totalResults>0 ? `${totalResults} ${totalResults===1? "option" : "options"}` : "-"}/>
             <div className="results-filters">
                 <Filter
                     filter={startingPointFilter}

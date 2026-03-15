@@ -29,15 +29,15 @@
   background-color: transparent;
 }
 .search-form .my-react-select__option--is-focused{
-  background: var(--app-select-focused);
+  background: var(--app-input-bg-hover);
   color: var(--app-text-primary);
 }
 .search-form .my-react-select__option:active {
-  background: var(--app-select-active);
+  background: var(--app-input-bg-hover);
 }
 .search-form .my-react-select__option--is-selected{
-  background: var(--app-select-selected);
   color: var(--app-text-primary);
+  font-weight: 800;
 }
 .search-form .my-react-select__placeholder{
   color: var(--app-text-placeholder);

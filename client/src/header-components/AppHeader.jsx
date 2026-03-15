@@ -11,7 +11,7 @@ export const AppHeader = () => {
         <div className="app-header">
             <div className="app-header__first-row">
                 <div className="app-header__icon-title">
-                    <IconPlaneTilt className="app-header__icon" />
+                    <IconPlaneTilt className="app__icon" />
                     <h1 className="app-header__title">
                         FlyTogether
                     </h1>
