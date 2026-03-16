@@ -19,8 +19,7 @@ export const GroupSizeButton = ({content, maxValue, minValue, value, setFunction
     <ActionIcon
       className="group-size-button"
       size = "xxl"
-      variant="gradient"
-      gradient={{ from: '#007bff', to: '#00c6ff', deg: 90 }}
+      color = "rgb(0, 160, 255)"
       aria-label={content ==="+" ? "Increase value" : "Decrease value"}
       onClick={() => setFunction(content === "+" ? increment(value, maxValue) : decrement(value, minValue))}
       disabled={content ==="+" ? value === maxValue :value === minValue}

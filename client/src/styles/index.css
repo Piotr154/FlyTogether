@@ -9,6 +9,8 @@
   --app-shadow-color: rgba(0, 0, 0, 0.15);
   --app-input-bg: #ffffff;
   --app-input-bg-hover: #f0f0f0;
+  --app-button-bg:#f5f5f5;
+  --app-button-bg-hover: #e7e7e7;
   --app-header-bg: #f8f9fa;
   --app-accent-gradient: linear-gradient(90deg, rgb(0, 123, 255), rgb(0, 198, 255));
   --mantine-color-body: var(--app-bg-body);
@@ -22,14 +24,16 @@
 :root.dark-mode {
   color-scheme: dark;
   --app-bg-body: #1a1b1e;
-  --app-bg-card: #25262b;
+  --app-bg-card: #1d1e22;
   --app-text-primary: white;
   --app-text-secondary: #e1e1e1;
   --app-text-placeholder: #b2b2b2;
   --app-border-color: #373a40;
   --app-shadow-color: rgba(0, 0, 0, 0.4);
-  --app-input-bg: #25262b;
+  --app-input-bg: #1d1e22;
   --app-input-bg-hover: #2c2e33;
+  --app-button-bg: #1c1d21;
+  --app-button-bg-hover: #161718;
   --app-header-bg: #141517;
   --app-calendar-hover: #2c2d31;
   --app-calendar-bg: #2f3036;

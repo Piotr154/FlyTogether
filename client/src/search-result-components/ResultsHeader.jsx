@@ -35,7 +35,7 @@ export const ResultsHeader = ({
         <>
         <div className="results-header">
             <div className="results-header-text-box">
-                <span className="results-header-main-text">Flights to {destination}</span>
+                <span className="results-header-main-text">Flights {showingDepartures?`to`:`from`} {destination}</span>
                 <span className="results-header-sub-text">Showing results for {StartingPointsCount} {StartingPointsCount===1?"city":"cities"}</span>
             </div>
             <div className="results-header-buttons-box">
@@ -43,13 +43,13 @@ export const ResultsHeader = ({
                     onClick = {()=>setShowingDepartures(true)}
                     className = {showingDepartures? "results-button-departure-active" : "results-button-departure"}
                 >
-                    Departure
+                    <span>Departure</span>
                 </button>
                 <button 
                     onClick = {()=>setShowingDepartures(false)}
                     className = {showingDepartures? "results-button-return" : "results-button-return-active"}
                 >
-                    Return
+                    <span>Return</span>
                 </button>
             </div>
         </div>

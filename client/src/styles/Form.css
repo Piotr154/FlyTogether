@@ -85,7 +85,7 @@
   border: none;
   opacity: 0.85;
   transition: opacity 0.3s, transform 0.2s;
-  background: var(--app-accent-gradient);
+  background: rgb(0, 160, 255);
   color: white;
   transform: translateZ(0);
   -webkit-font-smoothing: antialiased;

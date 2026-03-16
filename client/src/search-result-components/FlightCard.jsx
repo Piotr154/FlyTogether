@@ -1,4 +1,4 @@
-import { IconCalendarWeek, IconPlaneTilt, IconPlane} from '@tabler/icons-react';
+import { IconCalendarWeek, IconPlaneTilt, IconPlane, IconClockHour4 } from '@tabler/icons-react';
 import { Divider } from '@mantine/core';
 import '../styles/FlightCard.css';
 
@@ -24,35 +24,36 @@ export const FlightCard = ({ flight }) => {
             <div className="flight-details">
                 <div className="flight-date-and-airline">
                     <div className="flight-date">
-                        <IconCalendarWeek/> 
+                        <IconCalendarWeek className='flight-date-and-airline-icon'/> 
                         {departureDate}
                     </div>
                     <div className="flight-airline">
-                        <IconPlaneTilt/>
+                        <IconPlaneTilt className='flight-date-and-airline-icon'/>
                         {airline}
                     </div>
                 </div>
                 <div className="flight-timeline">
                     <div className="flight-departure-section">
-                        <p><h2>{departureExactTime}</h2></p>
-                        <p>{origin}</p>
+                        <span><h2>{departureExactTime}</h2></span>
+                        <span className="flight-timeline-subtext">{origin}</span>
                     </div>
                     <div className="flight-duration-section">
                         <div className="flight-duration-bar">
                             <Divider flex={1} color="gray.3" />
-                            <IconPlane/>
+                            <IconPlane className="flight-duration-bar-icon"/>
                             <Divider flex={1} color="gray.3" />
                         </div>
-                        <p>{durationHoursMinutes}</p>
+                        <span className="flight-timeline-subtext"><IconClockHour4 className="flight-duration-icon"stroke={2}/>{durationHoursMinutes}</span>
                     </div>
                     <div className="flight-return-section">
-                        <p><h2>{arrivalExactTime}</h2></p>
-                        <p>{destination}</p>
+                        <span><h2>{arrivalExactTime}</h2></span>
+                        <span className="flight-timeline-subtext">{destination}</span>
                     </div>
                 </div>
             </div>
             <div className="flight-price">
                 <h2>${price}</h2>
+                <span>per person</span>
                 <a href={deep_link} target="_blank">Select</a>
             </div>
         </div>

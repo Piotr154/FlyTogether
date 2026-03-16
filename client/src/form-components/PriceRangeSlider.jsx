@@ -59,7 +59,7 @@ export const PriceRangeSlider = ({ value, setFunction }) => {
                         cursor: 'grab',
                         userSelect: 'none',
                     },
-                    bar: { background: "var(--app-accent-gradient)" },
+                    bar: { background: "rgb(0, 160, 255)" },
                     thumb: { 
                         transition: 'border-color 0.3s ease-in-out',
                         border: "1px solid var(--app-border-color)",

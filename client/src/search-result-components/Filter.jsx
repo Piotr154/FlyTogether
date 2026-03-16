@@ -11,7 +11,8 @@ export const Filter = ({data, startingPointFilter, setStartingPointFilter}) => {
             value={startingPointFilter}
             onChange={setStartingPointFilter}
             classNames={{
-                option: 'filter-option' 
+                option: 'filter-option',
+                input: 'filter-input'
             }}
             hidePickedOptions
             styles  = {{
@@ -21,9 +22,6 @@ export const Filter = ({data, startingPointFilter, setStartingPointFilter}) => {
                         },
                         input:{
                             borderRadius: "8px",
-                            border: "1px solid var(--app-border-color)",
-                            backgroundColor: "var( --app-bg-card)",
-                            color: "var( --app-text-primary)",
                         },
                         placeholder:{
                             margin: "0",

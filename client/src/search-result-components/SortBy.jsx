@@ -11,7 +11,8 @@ export const SortBy = ({data, SortFlightsBy, setSortFlightsBy}) => {
             value={SortFlightsBy}
             onChange={setSortFlightsBy}
             classNames={{
-                option: 'sort-by-option' 
+                option: 'sort-by-option',
+                input: 'sort-by-input' 
             }}
             styles  = {{
                         label:{
@@ -20,9 +21,6 @@ export const SortBy = ({data, SortFlightsBy, setSortFlightsBy}) => {
                         },
                         input:{
                             borderRadius: "8px",
-                            border: "1px solid var(--app-border-color)",
-                            backgroundColor: "var( --app-bg-card)",
-                            color: "var( --app-text-primary)",
                         },
                         dropdown: {
                             backgroundColor: "var( --app-bg-card)",
