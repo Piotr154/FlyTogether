@@ -72,7 +72,7 @@
 .contact-icon{
     height: 20px;
     width: 20px;
-    color: rgb(0, 160, 255);
+    color: var(--app-pretty-blue);
 } 
 .footer-contact-line a{
     text-decoration: none;
@@ -84,6 +84,6 @@
     transition: color 0.2s ease-in-out;
 }
 .app-footer li:hover{
-    color: rgb(0, 160, 255);
+    color: var(--app-pretty-blue);
     cursor: pointer;
 }

@@ -6,7 +6,7 @@ export const Filter = ({data, startingPointFilter, setStartingPointFilter}) => {
         <MultiSelect 
             className="filter"
             label= "Filter"
-            placeholder="Pick value"
+            placeholder="Filter starting points"
             data={data}
             value={startingPointFilter}
             onChange={setStartingPointFilter}

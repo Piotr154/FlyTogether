@@ -85,7 +85,7 @@
   border: none;
   opacity: 0.85;
   transition: opacity 0.3s, transform 0.2s;
-  background: rgb(0, 160, 255);
+  background: var(--app-pretty-blue);
   color: white;
   transform: translateZ(0);
   -webkit-font-smoothing: antialiased;

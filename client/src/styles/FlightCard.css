@@ -4,6 +4,7 @@
     flex-direction: row;
     gap: 24px;
     background-color: var(--app-bg-card);
+    box-shadow: 0 4px 8px -2px var(--app-shadow-color);
     padding: 32px;
     border-radius: 12px;
     border: 1px solid var(--app-border-color);
@@ -23,6 +24,7 @@
     border-radius: 10px;
     padding: 10px;
     background-color: var( --app-input-bg-hover);
+    box-shadow: 0 4px 4px -2px var(--app-shadow-color);
     font-size: 14px;
 }
 .flight-date, .flight-airline{
@@ -100,7 +102,7 @@
     align-items: center;
     border: none;
     border-radius: 12px;
-    background: rgb(0, 160, 255);
+    background: var(--app-pretty-blue);
     color: white;
     font-weight: bold;
     text-decoration: none;
@@ -122,7 +124,7 @@
 }
 
 .flight-duration-bar-icon{
-    color: rgb(0, 160, 255);
+    color: var(--app-pretty-blue);
     width: 20px;
     height: 20px;
 }

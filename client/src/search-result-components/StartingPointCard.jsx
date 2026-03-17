@@ -21,7 +21,7 @@ export const StartingPointCard = ({ startingPoint, flights, showingDepartures, s
         <div className="starting-point-card">
             <div className="starting-point-card-header">
                 <IconMapPin
-                    color = "rgb(0, 160, 255)"
+                    color = "var(--app-pretty-blue)"
                 />
                 <h3>{showingDepartures? "From " : "To "} {startingPoint}</h3>
                 <Divider flex={1} color="gray.3" />

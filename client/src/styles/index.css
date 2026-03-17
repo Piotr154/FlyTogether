@@ -1,5 +1,6 @@
 :root {
   color-scheme: light;
+  --app-pretty-blue: rgb(0, 160, 255);
   --app-bg-body: #f5f5f5;
   --app-bg-card: #ffffff;
   --app-text-primary: black;

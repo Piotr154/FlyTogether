@@ -238,14 +238,14 @@ export const Form = ({ onSubmitData, isSearching }) => {
                   border: "1px solid var(--app-border-color)",
                   backgroundColor: strictDate 
                     ? "var(--app-date-toggle-bg)" 
-                    : "rgb(0, 160, 255)",
+                    : "var(--app-pretty-blue)",
                   cursor: "pointer",
                   transition: "background-color 0.3s ease, border-color 0.3s ease"
                 },
                 thumb: {
                 backgroundColor: strictDate 
                   ? "var(--app-date-toggle-bg)"
-                  : "rgb(0, 160, 255)",
+                  : "var(--app-pretty-blue)",
                 border: "4px solid #fff",
                 transition: "background-color 0.3s ease, border-color 0.3s ease, left 150ms ease"
               },

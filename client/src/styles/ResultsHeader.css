@@ -51,7 +51,7 @@
     cursor: pointer;
 }
 .results-button-departure-active, .results-button-return-active{
-    background-color: rgb(0, 160, 255);
+    background-color: var(--app-pretty-blue);
     cursor: default;
     color: white;
     box-shadow: 0 0 8px 2px var(--app-shadow-color);
