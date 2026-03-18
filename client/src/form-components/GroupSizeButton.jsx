@@ -1,4 +1,5 @@
 import { ActionIcon } from '@mantine/core';
+import '../styles/GroupSizeButton.css';
 
 const increment = (prev, maxValue) => {
   if (isNaN(prev))
@@ -17,9 +18,7 @@ export const GroupSizeButton = ({content, maxValue, minValue, value, setFunction
   return (
     <ActionIcon
       className="group-size-button"
-      size = "xxl"
-      variant="gradient"
-      gradient={{ from: '#007bff', to: '#00c6ff', deg: 90 }}
+      color = "var(--app-pretty-blue)"
       aria-label={content ==="+" ? "Increase value" : "Decrease value"}
       onClick={() => setFunction(content === "+" ? increment(value, maxValue) : decrement(value, minValue))}
       disabled={content ==="+" ? value === maxValue :value === minValue}

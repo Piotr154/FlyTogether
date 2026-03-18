@@ -5,17 +5,20 @@ import { SearchResult } from './search-result-components/SearchResult';
 import { MOCK_FLIGHTS } from './mockData.js';
 import { scroller } from 'react-scroll';
 import { AppHeader } from './header-components/AppHeader.jsx';
+import { AppFooter } from './footer-components/AppFooter.jsx';
 
 
 function App() {
   const [results, setResults] = useState(null);
   const [isSearching, setIsSearching] = useState(false);
+  const [searchedDestination, setSearchedDestination] = useState("");
 
   const resultsRef = useRef(null);
 
   const handleSearchRequest = async (formData) => {
     setIsSearching(true);
     setTimeout(() => {
+      setSearchedDestination('Paris');
       setResults(MOCK_FLIGHTS);
       setIsSearching(false);
     }, 3000);
@@ -36,7 +39,8 @@ function App() {
   <div className="App">
     <AppHeader />
     <Form onSubmitData={handleSearchRequest} isSearching={isSearching} />
-    <SearchResult refResult={resultsRef} result={results} />
+    <SearchResult refResult={resultsRef} result={results} destination={searchedDestination}/>
+    <AppFooter/>
   </div>
   );  
 }

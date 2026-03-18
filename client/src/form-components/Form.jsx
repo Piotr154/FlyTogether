@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react'
-import { DateField } from './DateField'
-import { SelectField } from './SelectField'
-import { GroupSizeButton } from './GroupSizeButton'
+import { useEffect, useState } from 'react';
+import { DateField } from './DateField.jsx';
+import { SelectField } from './SelectField.jsx';
+import { GroupSizeButton } from './GroupSizeButton.jsx';
 import { IconPlaneTilt } from '@tabler/icons-react';
 import { Loader, Switch } from '@mantine/core';
 import { AnimatePresence, motion } from "motion/react";
-import '../styles/Form.css'
+import { PriceRangeSlider } from './PriceRangeSlider.jsx';
+import '../styles/Form.css';
 
 const today = new Date();
 today.setHours(0, 0, 0, 0);
@@ -41,6 +42,7 @@ export const Form = ({ onSubmitData, isSearching }) => {
   const [departureDate, setDepartureDate] = useState(null);
   const [returnDate, setReturnDate] = useState(null);
   const [strictDate, setStrictDate] = useState(true);
+  const [priceRange, setPriceRange] = useState(5000);
   const [placeholderOrigin, setPlaceholderOrigin] = useState(() => Array.from({ length: groupSize }, () => randomCity()));
   const [placeholderDestination, setPlaceholderDestination] = useState(randomCity());
 
@@ -113,8 +115,6 @@ export const Form = ({ onSubmitData, isSearching }) => {
       console.log("Received flights:", data);
       alert(`Found ${data.data.length || 0} flight options.`);
 
-      clearForm();
-
     } catch (error) {
       console.error("Error occurred:", error);
       alert("Failed to retrieve flights. Please try again later.");
@@ -132,15 +132,13 @@ export const Form = ({ onSubmitData, isSearching }) => {
       strictDate: strictDate
     };
     onSubmitData(payload); 
-    clearForm();
   }
 
   const canSearch = !(
     origin.some(city => city.length === 0) ||
     destination.length === 0 ||
     departureDate === null ||
-    returnDate === null ||
-    normalizeDate(departureDate) > normalizeDate(returnDate)
+    returnDate === null
   );
 
   return (
@@ -210,7 +208,7 @@ export const Form = ({ onSubmitData, isSearching }) => {
         {/* Travel Dates */}
         <div>
            <label className="search-form__label">Travel dates</label>
-           <div style={{ display: 'flex', gap: '12px' }}>
+           <div className="search-form__dates-area">
               <DateField
                 id="departure-date"
                 label="Departure"
@@ -240,14 +238,14 @@ export const Form = ({ onSubmitData, isSearching }) => {
                   border: "1px solid var(--app-border-color)",
                   backgroundColor: strictDate 
                     ? "var(--app-date-toggle-bg)" 
-                    : "rgb(0, 160, 255)",
+                    : "var(--app-pretty-blue)",
                   cursor: "pointer",
                   transition: "background-color 0.3s ease, border-color 0.3s ease"
                 },
                 thumb: {
                 backgroundColor: strictDate 
                   ? "var(--app-date-toggle-bg)"
-                  : "rgb(0, 160, 255)",
+                  : "var(--app-pretty-blue)",
                 border: "4px solid #fff",
                 transition: "background-color 0.3s ease, border-color 0.3s ease, left 150ms ease"
               },
@@ -256,6 +254,13 @@ export const Form = ({ onSubmitData, isSearching }) => {
             />
             {strictDate ? null : <span className ="date-margin-info">±3 days flexibility</span>}
            </div>
+        </div>
+        <div className="search-form__price-range-area">
+          <label className="search-form__label">Price range</label>
+          <PriceRangeSlider 
+            value={priceRange}
+            setFunction={setPriceRange}
+          />
         </div>
 
         <div className="search-form__actions">
@@ -274,5 +279,5 @@ export const Form = ({ onSubmitData, isSearching }) => {
 
       </fieldset>
     </form>
-  )
+  );
 }

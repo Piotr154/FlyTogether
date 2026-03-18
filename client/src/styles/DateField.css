@@ -1,0 +1,60 @@
+.date-field {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-form .date-input {
+  width: 100%;
+  border-radius: 10px;
+  z-index: 1;
+  background-color: var(--app-input-bg);
+  border: 1px solid var(--app-border-color);
+  color: var(--app-text-primary);
+  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+
+.search-form .date-input:hover {
+  background-color: var(--app-input-bg-hover);
+}
+
+.search-form .date-label {
+  color: var(--app-text-secondary);
+}
+
+.search-form .date-placeholder {
+  padding-left: 24px;
+  color: var(--app-text-placeholder);
+}
+
+.date-dropdown {
+  background-color: var(--app-calendar-bg);
+  border: 1px solid var(--app-border-color);
+}
+.date-dropdown button[data-disabled] {
+  cursor: default;
+}
+.date-dropdown button:not([data-disabled]) {
+  color: var(--app-text-primary);
+}
+.date-dropdown button[data-weekend] {
+  color: var(--app-calendar-weekend-color);
+}
+.date-dropdown button:not([data-disabled]):not([data-selected]):hover {
+  background-color: var(--app-calendar-hover);
+}
+.date-dropdown button[data-selected] {
+  background-color: var(--app-calendar-selected);
+  color: var(--app-text-primary);
+}
+.date-icon {
+  position: absolute;
+  top: 33px;
+  left: 14px;
+  z-index: 2;
+  width: 18px;
+  height: 18px;
+  stroke-width: 1.5;
+  color: var(--app-text-placeholder);
+}

@@ -1,0 +1,21 @@
+.SummaryCard{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    height: auto;
+    background-color: var(--app-bg-card);
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid var(--app-border-color);
+}
+.SummaryCard h3{
+    font-size: 14px;
+}
+.summaryTitle{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 6px;
+}
