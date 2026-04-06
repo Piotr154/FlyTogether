@@ -1,0 +1,68 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id              String @id @default(cuid())
+  email           String @unique
+  passwordHash    String
+  name            String
+  createdAt       DateTime @default(now())
+  parties         Party[]
+}
+
+enum PartyStatus {
+  OPEN
+  LOCKED
+  COMPLETED
+}
+
+model Party {
+  id            String @id @default(cuid())
+  ownerId       String
+  owner         User @relation(fields: [ownerId], references: [id])
+  name          String
+  shareToken    String @unique @default(cuid())
+  status        PartyStatus @default(OPEN)
+  createdAt     DateTime @default(now())
+  expiresAt     DateTime
+  members       PartyMember[]
+}
+
+model PartyMember {
+  id            String @id @default(cuid())
+  name          String
+  partyId       String
+  party         Party @relation(fields: [partyId], references: [id])
+  sessionToken  String @unique @default(cuid())
+  createdAt     DateTime @default(now())
+  origins       MemberOrigin[]
+  availability  MemberAvailability[]
+}
+
+model MemberOrigin {
+  id            String @id @default(cuid())
+  memberId      String 
+  member        PartyMember @relation(fields: [memberId], references: [id])
+  cityCode      String
+  createdAt     DateTime @default(now())
+}
+
+model MemberAvailability {
+  id            String @id @default(cuid())
+  memberId      String
+  member        PartyMember @relation(fields: [memberId], references: [id])
+  date          DateTime
+  createdAt     DateTime @default(now())
+}
